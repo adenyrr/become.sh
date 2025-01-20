@@ -5,4 +5,4 @@ Le site est éditable ici, chaque modification est copiée sur un repos local, q
 
 Le documentation sera écrite au fur et à mesure.
 
-Made with <3 and lot of coffee :D
+Made with :heart: and lot of :tea: :D
