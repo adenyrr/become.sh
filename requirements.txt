@@ -1,4 +1,4 @@
-mkdocs-material
+mkdocs
 mkdocs-ivory
 pathspec
 regex
