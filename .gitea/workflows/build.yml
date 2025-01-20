@@ -1,0 +1,42 @@
+name: Build Docs
+# Allow write perms
+permissions:
+  contents: write
+
+# triggers on every commit to main/master branch
+on:
+  push:
+    branches:
+      - main
+      - master
+
+# define the jobs (tasks) to do when trigger occurs
+jobs:
+  Build-Docs: # name of job, can be any non-spaced string
+    runs-on: ubuntu-latest # use a system that's defined in the runner's labels
+
+    steps:
+      # echos out run info, not a necessary step    
+      - name: Run information
+        run: |
+          echo "Actor - ${{ gitea.actor }}"
+          echo "Event - ${{ gitea.event_name }}"
+          echo "Branch - ${{ gitea.ref }}"
+          echo "Repository - ${{ gitea.repository }}"
+      - name: Setting up Python virtual environment
+        run: |
+          python -m venv /data/venv
+          source /data/venv/bin/activate
+          echo "Python environment created at ${VIRTUAL_ENV}"                    
+      # clone repository to runner's workspace
+      - name: "Checking out repository code"
+        uses: actions/checkout@v4
+      # use the mkdocs command to build the repo
+      - name: Building MkDocs
+        run: |
+          echo "Entering virtual environment"
+          source /data/venv/bin/activate
+          echo "Installing required packages"
+          pip install -q -r ./requirements.txt
+          echo "Building mkdocs"
+          python -m mkdocs build -f ./mkdocs.yml -d /site
