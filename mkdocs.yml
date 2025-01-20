@@ -22,47 +22,29 @@ theme:
   font: false
   icon:
     logo: material/lightbulb
-  palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/link
-        name: Passer en mode clair
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: dark-orange
-      toggle:
-        icon: material/toggle-switch
-        name: Passer en mode sombre
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: light-blue
-      accent: amber
-      toggle:
-        icon: material/toggle-switch-off
-        name: Passer en mode préférence système
-
+  include_homepage_in_sidebar: false
+  sticky_navigation: true
 
 plugins:
   - search
-
-extra:
+repo_url: https://github.com/adenyrr/become.sh
+extra:  
   consent:
     title: On a des cookies !
     description: >- 
       On utilise des cookies ici. Pas beaucoup, c'est juste pour compter les gens qui passent et savoir quels sujets sont les plus regardés.
   analytics: 
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Merci pour le feedback !
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: 0
-          note: >- 
-            Merci pour le feedback !
+  feedback:
+    title: Was this page helpful?
+    ratings:
+      - icon: material/emoticon-happy-outline
+        name: This page was helpful
+        data: 1
+        note: >-
+          Merci pour le feedback !
+      - icon: material/emoticon-sad-outline
+        name: This page could be improved
+        data: 0
+        note: >- 
+          Merci pour le feedback !
 copyright: CC - BY (adenyr)
