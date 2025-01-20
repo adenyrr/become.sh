@@ -17,4 +17,4 @@ Actuellement, c'est trois machines qui composent mon cluster. Et ici, je vous mo
 Je ne suis pas (encore) adminsys. Bien que cela fait plusieurs années que je pratique le self-host, certaines pratiques ne sont pas les plus recommandées. Aussi, j'editerai au fur et à mesure de l'enrichissement de mes connaissances. 
 vous pouvez aussi me contacter pour proposer un changement. 
 
-### > made with :heart: and lot of :tea: :D
+### > made with love and lot of coffee <3
