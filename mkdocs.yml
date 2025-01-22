@@ -34,7 +34,9 @@ theme:
 plugins:
   - search
   - awesome-pages
+  
 repo_url: https://github.com/adenyrr/become.sh
+
 extra:  
   consent:
     title: On a des cookies !
@@ -54,7 +56,14 @@ extra:
         data: 0
         note: >- 
           Merci pour le feedback !
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/adenyrr/become.sh
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/AE8ZQ6Gcvz
+          
 copyright: CC - BY (adenyr)
+
 markdown_extensions:
   - pymdownx.arithmatex
   - pymdownx.b64
