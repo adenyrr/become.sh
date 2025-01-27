@@ -13,6 +13,7 @@ nav:
   - Outils:
     - commandes.md
     - softwares.md
+    - links.md
 
 theme:
   name: ivory
