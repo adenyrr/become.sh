@@ -7,13 +7,13 @@ nav:
     - acheter.md
     - hassio.md
   - Hardware:
-    - kesako.md
+    - hardware/kesako.md
   - Services:
-    - docker.md
+    - Intro à docker: services/docker.md
   - Outils:
-    - outils/commandes.md
-    - softwares.md
-    - links.md
+    - Commandes utiles: outils/commandes.md
+    - Trousse à outils: outils/softwares.md
+    - Liens utiles: outils/links.md
     
 use_directory_urls: true
 
