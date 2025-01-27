@@ -11,7 +11,7 @@ nav:
   - Services:
     - docker.md
   - Outils:
-    - commandes.md
+    - outils/commandes.md
     - softwares.md
     - links.md
     
