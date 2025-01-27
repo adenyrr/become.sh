@@ -8,6 +8,11 @@ nav:
     - hassio.md
   - Hardware:
     - kesako.md
+  - Services:
+    - docker.md
+  - Outils:
+    - commandes.md
+    - softwares.md
 
 theme:
   name: ivory
