@@ -10,9 +10,10 @@ nav:
     - Un assistant efficace : hassio.md
   - Services:
     - Intro à docker: services/docker.md
+    - Streaming avec Jellyfin : services/jellyfin.md
   - Outils & scripts:
     - Scripts && commandes : outils/commandes.md
-    - Logiciels recommandés: outils/softwares.md
+    - Logiciels recommandés : outils/softwares.md
     - Autres ressources : outils/links.md
     
 use_directory_urls: true
