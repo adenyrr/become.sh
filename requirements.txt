@@ -1,5 +1,4 @@
-mkdocs
-mkdocs-ivory
+mkdocs-material
 pathspec
 regex
 markdown-full-yaml-metadata
