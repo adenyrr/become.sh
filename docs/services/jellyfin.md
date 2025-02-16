@@ -1,4 +1,3 @@
-# Jellyfin
 ## Introduction
 ### C'est quoi ?
 
