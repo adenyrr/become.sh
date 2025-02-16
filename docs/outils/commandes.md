@@ -6,7 +6,7 @@ La commande `sed` permet de modifier ou d'ajouter une chaine de caractères dans
 
 `$sudo sed -i 's/^deb .*/& contrib non-free/g' /etc/apt/sources.list && apt update`
 
-Une explication de la commande `sed` sur le site d'[ubuntu-fr](https://doc.ubuntu-fr.org/sed).
+!!! Une explication de la commande `sed` sur le site d'[ubuntu-fr](https://doc.ubuntu-fr.org/sed).
 
 ## Ajouter docker et docker compose sur debian
 
