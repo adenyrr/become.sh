@@ -120,7 +120,7 @@ curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
 
 ### Home Assistant
 
-Il est également possible d'installer Jellyfin directement depuis Home Asistant, s'il est exécuté en mode `système d'exploitation`. Il suffit de se rendre sur le menu des add-ons, puis d'ajouter le dépôt suivant : `https://github.com/alexbelgium/hassio-addons` ou de cliquer [ici](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Falexbelgium%2Fhassio-addons).
+Il est également possible d'installer Jellyfin directement depuis Home Assistant, s'il est exécuté en mode `système d'exploitation`. Il suffit de se rendre sur le menu des add-ons, puis d'ajouter le dépôt suivant : `https://github.com/alexbelgium/hassio-addons` ou de cliquer [ici](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Falexbelgium%2Fhassio-addons).
 
 ## Configuration 
 
