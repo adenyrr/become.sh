@@ -1,9 +1,9 @@
 ## Introduction
 ### C'est quoi ?
 
-[Jellyfin](https://jellyfin.org/) est une application de streaming multimédia. Elle permet de scanner une bibliothèque de fichiers vidéos, l'organiser dans une interface propre et soignée, reconnaitre et classer le contenu via les métadonnées et compléter celles-ci par la recherche sur des bases de donnes telles que IMDb. En bref, elle transforme n'importe quelle bibliothèque de films et séries en netflix personnel.
+[Jellyfin](https://jellyfin.org/) est une application de streaming multimédia. Elle permet de scanner une bibliothèque de fichiers vidéos, l'organiser dans une interface propre et soignée, reconnaitre et classer le contenu via les métadonnées en complétant celles-ci par la recherche sur des bases de donnes telles que IMDb. En bref, elle transforme n'importe quelle bibliothèque de films et séries en netflix personnel.
 
-!!! quote "Elle se défini lui-même par :"
+!!! quote "Elle se défini elle-même par :"
 
     Jellyfin est la solution média communautaire, qui vous permet de contrôler vos médias. Diffusez sur n'importe quel appareil à partir de votre propre serveur, sans aucune contrainte. Votre média, votre serveur, votre façon de faire.
 
@@ -15,7 +15,7 @@
 
 === "Avantages"
 
-    * Jellyfin est *vraiment* pratique lorsque l'on a des enfants. Il permet de configurer des heures d'accessibilité au service facilement, ainsi que l'accès aux classifications PEGI.
+    * Jellyfin est *vraiment* pratique lorsque l'on a des enfants. Elle permet de configurer des heures d'accessibilité au service facilement, ainsi que l'accès aux classifications PEGI.
     * Contrairement à Netflix ou Disney+, lorsque le film ou la série est terminé.e, aucune bande annonce ne se lance.
     * Jellyfin indique l'heure de fin du média regardé : ça conscientise à la modération
     * Il dispose de clients libres sur quasiment toutes les plateformes (Android, Web, Windows, Mac OS ...)
@@ -136,6 +136,12 @@ J'utilise le skin suivant (à ajouter à Tableau de bord > Général > Code CSS 
 @import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/libraryCardAriaText.css");
 ```
 Sinon, il en existe d'autres disponibles sur [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin/blob/main/THEMES.md) ou même un ancien plug-in : [skin-Manager](https://github.com/danieladov/jellyfin-plugin-skin-manager)
+
+Je recommande les add-ons suivants, disponibles depuis [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) :
+
+- LDAP : Centralise les informations de login (si on utilise authentik)
+- Intro Skipper : permet de passer introductions, génériques et rappels
+- Reports : permet de générer des logs et de les consulter
 
 ### Transcodage
 
