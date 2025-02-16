@@ -25,6 +25,7 @@ theme:
     - yaml
     - rust
   features:
+    - content.code.copy
     - search.suggest
     - navigation.instant
     - navigation.instant.progress
