@@ -53,7 +53,7 @@ Cela vaut pour un serveur léger, sans transcodage. Un Raspberry Pi peut égalem
 - Un NAS qui partage un volume où sont les médias
 - Une carte graphique
 
-!! tip "Ma solution"
+!!! tip "Ma solution"
 
     J'utilise une machine virtuelle dédié pour le multimédia, avec 4 coeurs, 4 GB de DDR4 et 96 GB de disque. Le transcodage se fait sur une nVidia 1060. J'utilise une instance OMV qui partage plusieurs téras de fichiers sur cette machine. 
 
@@ -112,9 +112,9 @@ Une fois docker installé, autant l'utiliser. Jellyfin publie un conteneur, de m
 
 Pour installer directement Jellyfin sous Linux, le projet propose un script tout fait :
 
-    ``` bash
-    curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
-    ```
+``` bash
+curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
+```
 
 ## Home Assistant
 
