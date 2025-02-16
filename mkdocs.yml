@@ -97,6 +97,7 @@ extra:
 copyright: CC - BY (adenyr)
 
 markdown_extensions:
+  - admonition
   - pymdownx.arithmatex
   - pymdownx.b64
   - pymdownx.betterem
@@ -127,3 +128,4 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
   - full_yaml_metadata
+  
