@@ -4,7 +4,9 @@
 
 La commande `sed` permet de modifier ou d'ajouter une chaine de caractères dans un fichier. Ici, on l'utilise pour ajouter les dépots 'contrib' et 'non-free' à chaque ligne de notre fichier `/etc/apt/sources.list`. Pour vérifier que la commande a bien édité les lignes, on peut utiliser la commande `cat /etc/apt/sources.list`. Enfin, on actualise les dépots. 
 
-`$sudo sed -i 's/^deb .*/& contrib non-free/g' /etc/apt/sources.list && apt update`
+```
+$sudo sed -i 's/^deb .*/& contrib non-free/g' /etc/apt/sources.list && apt update
+```
 
 !!! note " La commande sed ?"
 
@@ -16,4 +18,6 @@ Docker est omniprésent maintenant. Si on veut monter un serveur, c'est une éta
 
 L'installation se fait en deux étapes simples : on supprime les anciennes versions ou les autres systèmes de gestion de conteneurs, puis on installe docker. On utilisera le script fourni par [get-docker](https://get.docker.com/) par simplicité. Il vérifie quelle version de l'OS on possède, il ajoute le dépot correspondant et installe docker et ses dépendances. Rien de bien compliqué.
 
-`curl -fsSL https://get.docker.com -o install-docker.sh | sudo sh install-docker.sh`
+```
+curl -fsSL https://get.docker.com -o install-docker.sh | sudo sh install-docker.sh
+```
