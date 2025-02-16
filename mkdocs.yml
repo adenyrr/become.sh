@@ -34,8 +34,12 @@ theme:
     - toc.follow
     - navigation.top
   language: fr
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
   icon:
-    logo: material/lightbulb
+    logo: assets/logo.png
   include_homepage_in_sidebar: false
   sticky_navigation: true
   palette:
@@ -57,12 +61,7 @@ theme:
       toggle:
         icon: material/toggle-switch-off
         name: Suivre le système
-  font:
-    text: Roboto
-    code: Roboto Mono
-  favicon: assets/favicon.png
-  icon:
-    logo: assets/logo.png
+
 
 plugins:
   - search
@@ -129,4 +128,3 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
   - full_yaml_metadata
-  
