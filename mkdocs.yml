@@ -33,11 +33,35 @@ theme:
     - toc.follow
     - navigation.top
   language: fr
-  font: false
   icon:
     logo: material/lightbulb
   include_homepage_in_sidebar: false
   sticky_navigation: true
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Allumer la lumière
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Eteindre la lumière
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Suivre le système
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
 
 plugins:
   - search
