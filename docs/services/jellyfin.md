@@ -29,9 +29,10 @@
 ## Alternatives
 
 Les alternatives les plus connues sont :
-    - [Plex](https://plex.tv) : propriétaire
-    - [Kodi](https://kodi.tv) : open-source
-    - [Emby](https://emby.media) : propriétaire
+
+- [Plex](https://plex.tv) : propriétaire
+- [Kodi](https://kodi.tv) : open-source
+- [Emby](https://emby.media) : propriétaire
 
 # Installation
 
