@@ -2,18 +2,18 @@ site_name: become.sh
 docs_dir: './docs'
 
 nav:
-  - Pour débuter:
-    - index.md
-    - acheter.md
-    - hassio.md
-  - Hardware:
-    - hardware/kesako.md
+  - Prérequis:
+    - Introduction : index.md
+    - Matériel : matos.md
+    - La virtualisation avec Proxmox : proxmox.md
+    - Installer debian : debian.md
+    - Un assistant efficace : hassio.md
   - Services:
     - Intro à docker: services/docker.md
-  - Outils:
-    - Commandes utiles: outils/commandes.md
-    - Trousse à outils: outils/softwares.md
-    - Liens utiles: outils/links.md
+  - Outils & scripts:
+    - Scripts && commandes : outils/commandes.md
+    - Logiciels recommandés: outils/softwares.md
+    - Autres ressources : outils/links.md
     
 use_directory_urls: true
 
