@@ -38,16 +38,36 @@ Les alternatives les plus connues sont :
 
 ## Prérequis
 
+Un certain nombre de prérequis sont non-négociables :
 
+- CPU avec 2 coeurs
+- 4 GB de DDR
+- 8 GB de HDD
+- un dossier, disque, volume ou partage où se trouve le contenu
+
+Cela vaut pour un serveur léger, sans transcodage. Un Raspberry Pi peut également suffire. Pour bénéficier du transcodage, il faut au moins :
+
+- CPU avec 4 coeurs
+- 4 GB de DDR
+- 64 à 128 GB de HDD (soit 8 GB pour jellyfin, *et le reste pour les transcodages*)
+- Un NAS qui partage un volume où sont les médias
+- Une carte graphique
+
+!! tip "Ma solution"
+
+    J'utilise une machine virtuelle dédié pour le multimédia, avec 4 coeurs, 4 GB de DDR4 et 96 GB de disque. Le transcodage se fait sur une nVidia 1060. J'utilise une instance OMV qui partage plusieurs téras de fichiers sur cette machine. 
 
 ## Docker && compose
 
 Une fois docker installé, autant l'utiliser. Jellyfin publie un conteneur, de même que [linuxserver.io](https://docs.linuxserver.io/images/docker-jellyfin/). Le `docker compose` fourni ici est compatible avec [Portainer](https://portainer.io).
 
+!!! info
+
+    On change évidemment les repertoires `(/autre)/chemin/des/medias` par le chemin absolu du repertoire où est le contenu. On peut aussi ajouter ou enlever autant de repertoires qu'on veut, en respectant le même schéma.
+    Il faut évidemment que les repertoires existent, et s'ils proviennent d'un partage, qu'ils soient bien montés.
+
 === "Docker"
-
-    On change évidemment le `/chemin/des/medias` par le repertoire où se trouve le contenu.
-
+    
     ``` bash
     docker run -d \
      --name jellyfin \
@@ -61,8 +81,6 @@ Une fois docker installé, autant l'utiliser. Jellyfin publie un conteneur, de m
     ```
 
 === "Docker Compose"
-
-    On change évidemment les repertoires `(/autre)/chemin/des/medias` par le repertoire où est le contenu. On peut aussi ajouter ou enlever autant de repertoires qu'on veut, en respectant le même schéma :
 
     ``` yaml
     services:
@@ -90,4 +108,18 @@ Une fois docker installé, autant l'utiliser. Jellyfin publie un conteneur, de m
 
 !!! warning "Bonnes pratiques !"
 
+    La solution recommmandée est d'utiliser `docker`. Cependant, sur un serveur dédié au multimédia, on peut installer directement les exécutables fournis par l'équipe de jellyfin. C'est une solution qui *peut* convenir, par exemple sur une machine virtuelle.
+
+Pour installer directement Jellyfin sous Linux, le projet propose un script tout fait :
+
+    ``` bash
+    curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
+    ```
+
+## Home Assistant
+
+Il est également possible d'installer Jellyfin directement depuis Home Asistant, s'il est exécuté en mode `système d'exploitation`. Il suffit de se rendre sur le menu des add-ons, puis d'ajouter le dépôt suivant : `https://github.com/alexbelgium/hassio-addons` ou de cliquer [ici](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Falexbelgium%2Fhassio-addons).
+
 # Configuration 
+
+Il suffit de se rendre sur http://IP:8096 our commencer la configuration.
