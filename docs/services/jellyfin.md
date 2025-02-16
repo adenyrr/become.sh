@@ -1,3 +1,4 @@
+# Jellyfin
 ## Introduction
 ### C'est quoi ?
 
@@ -166,5 +167,7 @@ Pour commencer, il faut installer les drivers de la carte graphique (sous debian
 
     Je déconseille l'utilisation du transcodage sur raspberry pi. Les performances sont plus que décevantes. Transcodage (quasi)impossible via Home-Assistant.
 
-Pour une installation via les binaires, c'est tout. On passe directement à la configuration sur le Tableau de bord > Transcodage et selectionner la matrice à utiliser (nvidia, AMD, ...). Cocher ensuite les codecs à transcoder (compatibles avec le GPU) et valider. Redemarrer le serveur, et normalement : ça marche :)
+Pour une installation via les binaires, c'est tout. On passe directement à la configuration sur le Tableau de bord > Lecture > Transcodage et selectionner la matrice à utiliser (nvidia, AMD, ...). Cocher ensuite les codecs à transcoder (compatibles avec le GPU) et valider. Redemarrer le serveur, et normalement : ça marche :)
+
+Pour une installation depuis docker, il faut suivre le [protocole officiel](https://jellyfin.org/docs/general/administration/hardware-acceleration/nvidia#configure-with-linux-virtualization). 
 
