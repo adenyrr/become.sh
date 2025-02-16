@@ -1,7 +1,7 @@
 # Introduction
 ## C'est quoi ?
 
-[Jellyfin](https://jellyfin.org/) est une application de streaming multimédia. Elle permet de scanner une bibliothèque de fichiers vidéos, l'organiser dans une interface propre et soignée, reconnaitre et classer le contenu via les métadonnées et compléter celles-ci par la recherche sur des bases de donnes telles que imDB. En bref, elle transforme n'importe quelle bibliothèque de films et séries en netflix personnel.
+[Jellyfin](https://jellyfin.org/) est une application de streaming multimédia. Elle permet de scanner une bibliothèque de fichiers vidéos, l'organiser dans une interface propre et soignée, reconnaitre et classer le contenu via les métadonnées et compléter celles-ci par la recherche sur des bases de donnes telles que IMDb. En bref, elle transforme n'importe quelle bibliothèque de films et séries en netflix personnel.
 
 !!! quote "Elle se défini lui-même par :"
 
@@ -102,7 +102,7 @@ Une fois docker installé, autant l'utiliser. Jellyfin publie un conteneur, de m
         extra_hosts:
           - 'host.docker.internal:host-gateway'
     ```
-    On lance ensuite la commande `docker compose up -d`, on attend que l'appli s'installe et on peut se rendre sur `http://IP:8096` en remplaçant `IP` par l'adresse IP du serveur jellyfin. (Pour trouver l'adresse IP, on peut utiliser `ip -a` sous linux).
+    On lance ensuite la commande `docker compose up -d` qui installe ça.
 
 ## Exécutable
 
@@ -122,4 +122,15 @@ Il est également possible d'installer Jellyfin directement depuis Home Asistant
 
 # Configuration 
 
-Il suffit de se rendre sur http://IP:8096 our commencer la configuration.
+On attend que l'appli s'installe et on peut se rendre sur `http://IP:8096` en remplaçant `IP` par l'adresse IP du serveur jellyfin. (Pour trouver l'adresse IP, on peut utiliser `ip -a` sous linux).
+
+On crée un utilisateur qui sera admin, on ajoute le répertoire choisi, on défini le pays et la langue (qui serviront pour les méta-données) et on valide, puis on se reconnecte.
+
+## Skins && add-ons
+
+J'utilise le skin suivant (à ajouter à Tableau de bord > Général > Code CSS personalisé)
+``` CSS
+@import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/finimalism7.css");
+@import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/libraryCardAriaText.css");
+```
+Sinon, il en existe d'autres disponibles sur [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin/blob/main/THEMES.md) ou même un ancien plug-in : [skin-Manager](https://github.com/danieladov/jellyfin-plugin-skin-manager)
