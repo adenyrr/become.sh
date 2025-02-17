@@ -48,17 +48,18 @@ Les alternatives les plus connues sont :
 
 Avant d'installer quoi que ce soit, on attribue si possible une adresse IP fixe. Ensuite, on vérifie que la carte graphique est bien détectée avec
 
-    ``` bash
-    lspci
-    ```
+``` bash
+lspci
+```
 Qui liste l'ensemble des périphériques liés aux bus PCI(-e) et devrait renvoyer quelque chose du genre :
 
-    ``` bash
-    ...
-    00:10.0 VGA compatible controller: NVIDIA Corporation GP102 [GeForce GTX 1080 Ti] (rev a1)
-    00:10.1 Audio device: NVIDIA Corporation GP102 HDMI Audio Controller (rev a1)
-    ...
-    ```
+``` bash
+...
+00:10.0 VGA compatible controller: NVIDIA Corporation GP102 [GeForce GTX 1080 Ti] (rev a1)
+00:10.1 Audio device: NVIDIA Corporation GP102 HDMI Audio Controller (rev a1)
+...
+```
+
 Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est bien `GP102`, est bien détectée. Ensuite, on installe les drivers.
 
 === "nvidia"
