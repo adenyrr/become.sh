@@ -57,7 +57,7 @@ Cela vaut pour un serveur léger, sans transcodage. Un Raspberry Pi peut égalem
 
 !!! tip "Ma solution"
 
-    J'utilise une machine virtuelle dédié pour le multimédia, avec 4 coeurs, 4 GB de DDR4 et 96 GB de disque. Le transcodage se fait sur une nVidia 1060. J'utilise une instance OMV qui partage plusieurs téras de fichiers sur cette machine. 
+    J'utilise une machine virtuelle dédié pour le multimédia, avec 4 coeurs, 4 GB de DDR4 et 96 GB de disque. Le transcodage se fait sur une nvidia 1060. J'utilise une instance OMV qui partage plusieurs téras de fichiers sur cette machine. 
 
 ### Docker && compose
 
@@ -145,7 +145,7 @@ Je recommande les add-ons suivants, disponibles depuis [awesome-jellyfin](https:
 
 ### Transcodage
 
-Le transcodage permet de lire un média non-compatible sur un périphérique distant ou de modifier le bitrate d'un média. Par exemple, il peut-être intéressant de disposer de ses médias sous le codec `x265` qui prend moins de place que le `x264`, mais qui est incompatible avec de nombreux smartphones. Le transcosage permet à ce dernier de quand même lire le fichier distant, qui sera transformé à la volée par une carte graphique (en fait, une matrice de décodage/encodage) en un flux qui lui, sera compatible. En cas de connexion bridée, le transcodage permet également de diminuer le bitrate, le "débit" de la vidéo. C'est une fonctionnalité qui peut être intéressante, mais qui n'est pas indispensable. Sous windows, la procédure est la même. Plus d'informations sur le [site de jellyfin](https://jellyfin.org/docs/general/administration/hardware-acceleration)
+Le transcodage permet de lire un média non-compatible sur un périphérique distant ou de modifier le bitrate d'un média. Par exemple, il peut-être intéressant de disposer de ses médias sous le codec `H265` qui prend moins de place que le `H264`, mais qui est incompatible avec de nombreux smartphones. Le transcosage permet à ce dernier de quand même lire le fichier distant, qui sera transformé à la volée par une carte graphique (en fait, une matrice de décodage/encodage) en un flux qui lui, sera compatible. En cas de connexion bridée, le transcodage permet également de diminuer le bitrate, le "débit" de la vidéo. C'est une fonctionnalité qui peut être intéressante, mais qui n'est pas indispensable. Sous windows, la procédure est la même. Plus d'informations sur le [site de jellyfin](https://jellyfin.org/docs/general/administration/hardware-acceleration)
 
 !!! warning "Prérequis"
 
@@ -153,7 +153,7 @@ Le transcodage permet de lire un média non-compatible sur un périphérique dis
 
 Pour commencer, il faut installer les drivers de la carte graphique (sous debian et debian-like) :
 
-=== "nVidia"
+=== "nvidia"
 
     Les drivers nvidia étant propriétaires, il faut activer les dépots contrib et non-free *avant* d'installer `nvidia-smi`.
     ~~~ bash
