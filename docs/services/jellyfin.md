@@ -159,6 +159,10 @@ Pour commencer, il faut installer les drivers de la carte graphique (sous debian
     ~~~ bash
     sudo apt install nvidia-smi
     ~~~
+    On peut vérifier avec la commande 
+    ~~~ bash
+    nvidia-smi
+    ~~~
 
 === "AMD"
 
