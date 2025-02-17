@@ -89,7 +89,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 Ollama est installé, mais n'est utile que sous forme d'API ou de console. Pour simplifier son utilisation, on va donc installer OpenWebUI. Pour ça, il faut d'abord installer `python3-full` qui se chargera d'installer les scripts `python` (Python est le langage le plus utilisé dans le monde de l'IA). Puis, on demande à `pip` (le gestionnaire d'installation de *python*) d'installer le bon paquet.
 ``` bash
 sudo apt install python3-pip -y
-pip install open-webui
+pip install open-webui --break-system-packages
 #Lorsque l'installation est terminée, on lance OpenWebUI avec
 open-webui serve
 ```
