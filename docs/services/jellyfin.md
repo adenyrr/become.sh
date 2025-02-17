@@ -163,16 +163,27 @@ Pour commencer, il faut installer les drivers de la carte graphique (sous debian
 === "AMD"
 
     Les pilotes sont inclus dans le noyau linux par défaut, rien à faire :)
+    On peut vérifier si les drivers sont bien installés en cherchant `renderD128` dans :
+    ~~~ bash
+    ls /dev/dri
+    ~~~
 
 === "Intel"
 
-    Ca dépend vraiment de la carte, donc [rendez-vous ici](https://jellyfin.org/docs/general/administration/hardware-acceleration/intel)
+    ~~~ bash
+    sudo apt install -y intel-opencl-icd
+    ~~~
+    On peut vérifier si les drivers sont bien installés en cherchant `renderD128` dans :
+    ~~~ bash
+    ls /dev/dri
+    ~~~
+    Plus d'informations sur le site de [jellyfin](https://jellyfin.org/docs/general/administration/hardware-acceleration/intel)
 
 === "RPi"
 
     Je déconseille l'utilisation du transcodage sur raspberry pi. Les performances sont plus que décevantes. Transcodage (quasi)impossible via Home-Assistant.
 
-Pour une installation via les binaires, c'est tout. On passe directement à la configuration sur le Tableau de bord > Lecture > Transcodage et selectionner la matrice à utiliser (nvidia, AMD, ...). Cocher ensuite les codecs à transcoder (compatibles avec le GPU) et valider. Redemarrer le serveur, et normalement : ça marche :)
+Pour une installation via les binaires, c'est tout. On passe directement à la configuration sur le Tableau de bord > Lecture > Transcodage et selectionner la matrice à utiliser (nvidia, AMD, ...). Cocher ensuite les codecs à transcoder (compatibles avec le GPU) et valider.  S'il demande le chemin d'accès du périphérique, il suffit de mettre `/dev/dri/renderD128`. Cocher "utiliser le décodeur ndvec amélioré" si la carte est nvidia. Redemarrer le serveur, et profiter.
 
 Pour une installation depuis docker, il faut suivre le [protocole officiel](https://jellyfin.org/docs/general/administration/hardware-acceleration/nvidia#configure-with-linux-virtualization). 
 
