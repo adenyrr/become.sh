@@ -9,7 +9,7 @@ nav:
     - Installer debian : debian.md
     - Un assistant efficace : hassio.md
   - Services:
-    - Intro à docker: services/docker.md
+    - IA locale avec Ollama: services/ollama.md
     - Streaming avec Jellyfin : services/jellyfin.md
   - Outils & scripts:
     - Scripts && commandes : outils/commandes.md
