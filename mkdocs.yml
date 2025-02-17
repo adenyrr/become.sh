@@ -39,6 +39,8 @@ theme:
     text: Roboto
     code: Roboto Mono
   favicon: assets/favicon.png
+  icon:
+    logo: material/server-network
   include_homepage_in_sidebar: false
   sticky_navigation: true
   palette:
