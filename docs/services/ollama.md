@@ -60,7 +60,7 @@ Qui liste l'ensemble des périphériques liés aux bus PCI(-e) et devrait renvoy
 ...
 ```
 
-Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est bien `GP102`, est bien détectée. Ensuite, on installe les drivers.
+Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP102`, est bien détectée. Ensuite, on installe les drivers.
 
 === "nvidia"
 
@@ -75,6 +75,23 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est bien 
 
 
 ### Docker && compose
+
 ### Exécutable
-### Home Assistant
+
+!!! warning "Bonnes pratiques"
+
+    L'installation par le script automatique n'est recommandé que dans le cas d'une utilisation sur une machine (virtuelle ou non) dédiée.
+    
+L'équipe derrière Ollama fourni un script qui se charge de tout :
+``` bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+Olamma est installé, mais n'est utile que sous forme d'API ou de console. Pour simplifier son utilisation, on va donc installer OpenWebUI. Pour ça, il faut d'abord installer `python3-full` qui se chargera d'installer les scripts `python` (Python est le langage le plus utilisé dans le monde de l'IA). Puis, on demande à `pip` d'installer le bon paquet.
+``` bash
+sudo apt install python3-pip -y
+pip install open-webui
+#Lorsque l'installation est terminée, on lance OpenWebUI avec
+open-webui serve
+```
+
 ## Configuration 
