@@ -147,7 +147,7 @@ Je recommande les add-ons suivants, disponibles depuis [awesome-jellyfin](https:
 
 Le transcodage permet de lire un média non-compatible sur un périphérique distant ou de modifier le bitrate d'un média. Par exemple, il peut-être intéressant de disposer de ses médias sous le codec `H265` qui prend moins de place que le `H264`, mais qui est incompatible avec de nombreux smartphones. Le transcosage permet à ce dernier de quand même lire le fichier distant, qui sera transformé à la volée par une carte graphique (en fait, une matrice de décodage/encodage) en un flux qui lui, sera compatible. En cas de connexion bridée, le transcodage permet également de diminuer le bitrate, le "débit" de la vidéo. C'est une fonctionnalité qui peut être intéressante, mais qui n'est pas indispensable. Sous windows, la procédure est la même. Plus d'informations sur le [site de jellyfin](https://jellyfin.org/docs/general/administration/hardware-acceleration)
 
-!!! warning "Prérequis"
+!!! warning "Ressources && conso"
 
     Le transcodage consomme sensiblement plus de ressources, mais peut être pratique. De fait, il augmente aussi la consommation électrique.
 
