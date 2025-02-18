@@ -76,6 +76,45 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
 ### Docker && compose
 
+La méthode recommandée, comme bien souvent, est de passer via docker. Par chance, OpenWebUI fourni un conteneur *complet, incluant Ollama*. On a donc pas besoin d'installer les deux séparément, on a juste à lancer la commande :
+
+``` bash
+docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+```
+Personnellement, je préfère utiliser un docker compose, qui sera sous la forme :
+
+``` yaml
+services:
+    open-webui:
+        container_name: open-webui
+        restart: always
+        image: ghcr.io/open-webui/open-webui:ollama
+        ports:
+            - 3000:8080
+        volumes:
+            - ollama:/root/.ollama
+            - open-webui:/app/backend/data
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+volumes:
+    ollama:
+        external: true
+        name: ollama
+    open-webui:
+        external: true
+        name: open-webui
+```
+Comme toujours après un docker compose, on doit initialiser le fichier avec
+``` bash
+docker compose up -d
+```
+
 ### Exécutable
 
 !!! warning "Bonnes pratiques"
