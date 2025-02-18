@@ -92,8 +92,8 @@ services:
         ports:
             - 3000:8080
         volumes:
-            - ollama:/root/.ollama
-            - open-webui:/app/backend/data
+            - ./ollama:/root/.ollama
+            - ./open-webui:/app/backend/data
         deploy:
             resources:
                 reservations:
@@ -102,14 +102,30 @@ services:
                           count: all
                           capabilities:
                               - gpu
-volumes:
-    ollama:
-        external: true
-        name: ollama
-    open-webui:
-        external: true
-        name: open-webui
 ```
+
+??? failure "Installer les drivers *docker* pour nvidia"
+
+    Par défaut, docker est incapable d'utiliser directement le GPU. Il faut pour ça installer un driver particulier, fourni par nvidia.
+    On ajoute donc le dépôt :
+    ~~~ sh 
+    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
+    | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+    curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
+    | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' \
+    | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+    sudo apt-get update
+    ~~~
+    Puis on installe le driver depuis celui-ci :
+    ~~~ sh
+    sudo apt-get install -y nvidia-container-toolkit
+    ~~~
+    Et on l'intègre dans docker :
+    ~~~ sh
+    sudo nvidia-ctk runtime configure --runtime=docker
+    sudo systemctl restart docker
+    ~~~
+
 Comme toujours après un docker compose, on doit initialiser le fichier avec
 ``` bash
 docker compose up -d
