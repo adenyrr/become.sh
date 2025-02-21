@@ -102,7 +102,7 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
 ### Docker && compose
 
-La méthode recommandée, comme bien souvent, est de passer via docker. Même si OpenWebUI construit un conteneur incluant Ollama, on va séparer les deux applications, et exposer chacune d'elle. Le but est ici est de pouvoir utiliser chacun des services de manière indépendante. Par exemple, Ollama peut servir d'assistant en étant connecté à Home Assistant. Pour cela, il faut que le conteneur puisse être exposé, ce qu'on va faire ici.
+La méthode recommandée, comme bien souvent, est de passer via docker. Même si OpenWebUI construit un conteneur incluant Ollama, on va séparer les deux applications, et exposer chacune d'elle. Le but est ici est de pouvoir utiliser chacun des services de manière indépendante. Par exemple, Ollama peut servir d'assistant en étant connecté à Home Assistant. Pour cela, il faut que le conteneur puisse être exposé, ce qu'on va faire ici. Le `docker compose` fourni ici est compatible avec [Portainer](https://portainer.io)
 
 === "CG nvidia"
 
