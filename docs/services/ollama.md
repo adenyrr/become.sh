@@ -99,37 +99,59 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
 ### Docker && compose
 
-La méthode recommandée, comme bien souvent, est de passer via docker. Par chance, OpenWebUI fourni un conteneur *complet, incluant Ollama*. On a donc pas besoin d'installer les deux séparément, on a juste à lancer la commande :
+La méthode recommandée, comme bien souvent, est de passer via docker. Même si OpenWebUI construit un conteneur incluant Ollama, on va séparer les deux applications, et exposer chacune d'elle. Le but est ici est de pouvoir utiliser chacun des services de manière indépendante. Par exemple, Ollama peut servir d'assistant en étant connecté à Home Assistant. Pour cela, il faut que le conteneur puisse être exposé, ce qu'on va faire ici.
 
-``` bash
-docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
-```
-Personnellement, je préfère utiliser un docker compose, qui sera sous la forme :
+=== CG nvidia
 
-``` yaml
-services:
-    open-webui:
-        container_name: open-webui
-        restart: always
-        image: ghcr.io/open-webui/open-webui:ollama
+    ``` bash
+    docker run -d -p 3000:8080 --gpus=all -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda
+    ```
+    Personnellement, je préfère utiliser un docker compose, qui sera sous la forme :
+    
+    ``` yaml
+    services:
+      ollama:    
+        container_name: ollama
+        image: ollama/ollama:latest
+        ports:
+          - 11434:11434
+        volumes:
+          - ./ollama:/root/.ollama
+        restart: unless-stopped
+        deploy:
+          resources:
+              reservations:
+                  devices:
+                      - driver: nvidia
+                        count: all
+                        capabilities:
+                            - gpu
+    
+      open-webui:
+        container_name: open-webui 
+        image: ghcr.io/open-webui/open-webui:cuda
         ports:
             - 3000:8080
         volumes:
-            - ./ollama:/root/.ollama
-            - ./open-webui:/app/backend/data
+             - ./open-webui:/app/backend/data
+        environment:
+            - 'OLLAMA_BASE_URL=http://ollama:11434'
+        restart: always
         deploy:
-            resources:
-                reservations:
-                    devices:
-                        - driver: nvidia
-                          count: all
-                          capabilities:
-                              - gpu
-```
+          resources:
+              reservations:
+                  devices:
+                      - driver: nvidia
+                        count: all
+                        capabilities:
+                            - gpu
+    ```
+    
+    !!! failure "Installer les drivers *docker* pour nvidia"
+    
+        Les drivers *seuls* ne suffisent pas ! Ne pas oublier d'installer le toolkit docker !
 
-!!! failure "Installer les drivers *docker* pour nvidia"
-
-    Les drivers *seuls* ne suffisent pas !
+=== CG AMD
 
 Comme toujours après un docker compose, on doit initialiser le fichier avec
 ``` bash
