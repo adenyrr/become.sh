@@ -96,6 +96,9 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
     Les pilotes sont inclus dans le noyau linux par défaut, rien à faire :)
 
+    ??? warning
+        Certain.e.s utilisateur.trice.s rapportent le besoin d'installer le package "ROCm" sur certaines configurations.
+
 
 ### Docker && compose
 
@@ -153,6 +156,33 @@ La méthode recommandée, comme bien souvent, est de passer via docker. Même si
 
 === CG AMD
 
+    ``` yaml
+    services:
+        ollama:
+            container_name: ollama
+            image: ollama/ollama:rocm
+            volumes:
+                - ollama:/root/.ollama
+            ports:
+                - 11434:11434
+            devices:
+                - /dev/kfd
+                - /dev/dri
+        open-webui:
+            container_name: open-webui 
+            image: ghcr.io/open-webui/open-webui:main
+            ports:
+                - 3000:8080
+            volumes:
+                 - ./open-webui:/app/backend/data
+            environment:
+                - 'OLLAMA_BASE_URL=http://ollama:11434'
+            restart: always
+    ```
+=== Intel
+
+    Officiellement, les cartes Intel ne sont pas prises en charge.
+
 Comme toujours après un docker compose, on doit initialiser le fichier avec
 ``` bash
 docker compose up -d
@@ -176,4 +206,6 @@ pip install open-webui --break-system-packages
 open-webui serve
 ```
 
-## Configuration 
+## Configuration
+
+
