@@ -104,7 +104,7 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
 La méthode recommandée, comme bien souvent, est de passer via docker. Même si OpenWebUI construit un conteneur incluant Ollama, on va séparer les deux applications, et exposer chacune d'elle. Le but est ici est de pouvoir utiliser chacun des services de manière indépendante. Par exemple, Ollama peut servir d'assistant en étant connecté à Home Assistant. Pour cela, il faut que le conteneur puisse être exposé, ce qu'on va faire ici.
 
-=== CG nvidia
+=== "CG nvidia"
 
     ``` bash
     docker run -d -p 3000:8080 --gpus=all -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda
@@ -154,7 +154,7 @@ La méthode recommandée, comme bien souvent, est de passer via docker. Même si
     
         Les drivers *seuls* ne suffisent pas ! Ne pas oublier d'installer le toolkit docker !
 
-=== CG AMD
+=== "CG AMD"
 
     ``` yaml
     services:
@@ -179,7 +179,7 @@ La méthode recommandée, comme bien souvent, est de passer via docker. Même si
                 - 'OLLAMA_BASE_URL=http://ollama:11434'
             restart: always
     ```
-=== Intel
+=== "CG Intel"
 
     Officiellement, les cartes Intel ne sont pas prises en charge.
 
