@@ -255,3 +255,8 @@ On clique sur celui-ci et on peut alors le *customiser* un peu.
 
 Pour le modèle de langage, c'est terminé. On peut enfin cliquer sur "Nouvelle conversation" en haut à gauche, selectionner notre nouveau LLM installé et lui poser n'importe quelle question. Après quelques secondes, le temps de charger le modèle, il devrait être capable de mener une conversation de manière fluide.
 
+### Ajouter la recherche en temps réel
+
+Par défaut, le modèle de langage se limite aux informations contenues dans son dataset (données d'entrainement). On peut l'augmenter sensiblement en lui permettant d'effectuer des recherches sur internet, en temps réel, moyennant un surcoût de temps pour générer cette réponse. Lors de l'activation de cette fonction, l'utilisateur peut selectionner "Recherche Web" lors d'une conversation, et y introduire sa requête spécifique.
+Pour cela, il faut donc d'abord activer la fonctionnalité. Dans le menu d'adminitration, un peu plus bas que "Modèles" se trouve "Recherche Web". Une fois dedans, on peut activer la recherche, selectionner `DuckDuckGo` qui, en plus d'être relativement safe niveau vie privée, ne demande aucune clef d'API. Pour un peu plus de rapidité, j'ai modifié les valeurs de recherches conccurentes à `5` et ne selectionner que les `3` premiers résultats.
+On enregistre, puis on lance une nouvelle conversation. On clique sur "Recherche Web" et on vérifie que la fonctionnalité est bien présente.
