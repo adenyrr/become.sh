@@ -95,11 +95,12 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/AE8ZQ6Gcvz
           
-copyright: CC - BY (adenyr)
+copyright: CC - BY/NC (adenyr)
 
 markdown_extensions:
   - admonition
   - def_list
+  - md_in_html
   - pymdownx.arithmatex
   - pymdownx.b64
   - pymdownx.betterem
@@ -132,4 +133,3 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
   - full_yaml_metadata
-      
