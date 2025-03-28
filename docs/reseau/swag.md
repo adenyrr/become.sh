@@ -2,42 +2,47 @@
 
 ### Avant-propos
 
-
+Si certains services comme [Ollama](https://wiki.become.sh/services/ollama/) peuvent rester uniquement en local, d'autres comme [Home Assistant](https://wiki.become.sh/services/hassio/) gagnent à être exposés, afin de pouvoir etre utilisés en déplacement.
+Plusieurs solutions sont possibles comme l’utilisation d'un VPN ou le recours à un reverse-proxy. C'est cette dernière que l'on abordera ici.
 
 ### C'est quoi ?
 
-[SWAG](https://jellyfin.org/) est une application de streaming multimédia. Elle permet de scanner une bibliothèque de fichiers vidéos, l'organiser dans une interface propre et soignée, reconnaitre et classer le contenu via les métadonnées en complétant celles-ci par la recherche sur des bases de donnes telles que IMDb. En bref, elle transforme n'importe quelle bibliothèque de films et séries en netflix personnel.
+[SWAG](https://docs.linuxserver.io/general/swag/) pour "Secure Web Application Gateway", est une application de reverse-proxy basée sur nginx, incluant certbot pour la création de certificats SSL et fail2ban comme protection primaire. Moddable, le conteneur est édité par [linuxserver.io](https://linuxserver.io) et propose de facilement associer un nom de domaine à un service, en toute sécurité.
 
 !!! quote "Elle se défini elle-même par :"
 
-    Jellyfin est la solution média communautaire, qui vous permet de contrôler vos médias. Diffusez sur n'importe quel appareil à partir de votre propre serveur, sans aucune contrainte. Votre média, votre serveur, votre façon de faire.
-
-!!! question "Pourquoi Jellyfin et pas Plex ?"
-
-    Contrairement à Jellyfin, Plex est propriétaire. Le code n'est pas ouvert, personne ne peut en vérifier le contenu. De plus, Plex demande une clef d'API, payante, pour effectuer du transcodage. Jellyfin est complet et entièrement contrôlé par l'utilisateur.
+    SWAG - Secure Web Application Gateway (anciennement connu sous le nom de letsencrypt, sans rapport avec Let's Encrypt™) met en place un serveur web Nginx et un reverse proxy avec un support php et un client certbot intégré qui automatise les processus gratuits de génération et de renouvellement des certificats de serveur SSL (Let's Encrypt et ZeroSSL). Il contient également fail2ban pour la prévention des intrusions.
 
 ### Avantages & inconvénients
 
 === "Avantages"
 
-    * Jellyfin est *vraiment* pratique lorsque l'on a des enfants. Elle permet de configurer des heures d'accessibilité au service facilement, ainsi que l'accès aux classifications PEGI.
-    * Contrairement à Netflix ou Disney+, lorsque le film ou la série est terminé.e, aucune bande annonce ne se lance.
-    * Jellyfin indique l'heure de fin du média regardé : ça conscientise à la modération
-    * Il dispose de clients libres sur quasiment toutes les plateformes (Android, Web, Windows, Mac OS ...)
+    * SWAG est une application plutôt clef en main, incluant plusieurs outils fondamentaux.
+    * nginx est l'un des reverse-proxy les plus efficace en terme de rapidité et de consommation de ressources
+    * Le renouvellement du certificat SSL (permettant de faire du https) est automatique
+    * On peut assez facilement renforcer la sécurité
 
 === "Inconvénients"
 
-    * Plex est vraiment clef-en-main, parfois plus simple que Jellyfin
-    * Plex dispose de plus d'outils communautaires
-    * Plex dispose de nombreux clients
+    * Malgré son aspect clef-en-main, il demande une configuration manuelle dans tous les cas.
+    * Il restera toujours moins sécurisé qu'un accès par VPN uniquement
+    * Il est nécessaire d'ouvrir au moins un port sur son routeur (:443)
 
 ### Alternatives
 
 Les alternatives les plus connues sont :
 
-- [Plex](https://plex.tv) : propriétaire
-- [Kodi](https://kodi.tv) : open-source
-- [Emby](https://emby.media) : propriétaire
+- [Traefik](hhttps://doc.traefik.io/traefik/) : open-source
+- [HAProxy](https://www.haproxy.org/) : open-source
+- [Caddy](https://caddyserver.com/) : open-source
   
 
 ## Installation
+
+### Docker
+
+C'est la *seule* méthode prise en charge. Linuxserver est une communauté basée autour de la publication de conteneurs, il est donc normal de retrouver ceux-ci dans les méthodes recommandées.
+
+!!! warning "Bonnes pratiques :"
+
+    Personnellement, mon serveur proxy est une machine virtuelle dédiée, très légère. Je ne peux que recommander d'utiliser une machine dédiée au serveur proxy, celui-ci étant un point d'entrée pour de potentiels pirates. Ainsi, si le port 443 du routeur est ouvert et redirigé sur l'adresse du serveur proxy, il constitue une surface d'attaque non négligeable. Surface que l'on diminue en ne laissant qu'un seul service accessible.
