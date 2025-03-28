@@ -71,11 +71,7 @@ plugins:
   
 repo_url: https://github.com/adenyrr/become.sh
 
-extra:  
-  consent:
-    title: On a des cookies !
-    description: >- 
-      On utilise des cookies ici. Pas beaucoup, c'est juste pour compter les gens qui passent et savoir quels sujets sont les plus regardés.
+extra:
   analytics: 
     provider: plausible
     domain: analytics.massivedynamics.be
