@@ -2,12 +2,12 @@ site_name: become.sh
 docs_dir: './docs'
 
 nav:
-  - Prérequis:
-    - Introduction : index.md
-    - Matériel : matos.md
-    - La virtualisation avec Proxmox : proxmox.md
-    - Installer debian : debian.md
-    - Un assistant efficace : hassio.md
+  - Home:
+    - Intro : index.md
+  - Réseau:
+    - Exposer avec SWAG: reseau/swag.md
+  - Virtualisation:
+    - Installer Proxmox PVE : virtu/pve.md
   - Services:
     - IA locale avec Ollama: services/ollama.md
     - Streaming avec Jellyfin : services/jellyfin.md
@@ -67,6 +67,7 @@ theme:
 plugins:
   - search
   - awesome-pages
+  - material-plausible
   
 repo_url: https://github.com/adenyrr/become.sh
 
@@ -76,6 +77,8 @@ extra:
     description: >- 
       On utilise des cookies ici. Pas beaucoup, c'est juste pour compter les gens qui passent et savoir quels sujets sont les plus regardés.
   analytics: 
+    provider: plausible
+    domain: analytics.massivedynamics.be
   feedback:
     title: Cette page vous a aidé ?
     ratings:
