@@ -48,7 +48,8 @@ Un certain nombre de prérequis sont non-négociables :
 - 4 GB de HDD
 - Accès SSH
 - Docker
-- Un NDD, Nom de Domaine
+- Un NDD (Nom de Domaine)
+- Le port 443 d'ouvert et redirigé vers l'IP du proxy
 
 ### Docker
 
@@ -110,4 +111,4 @@ Comme d'habitude, le docker-compose est compatible Portainer et Komodo.
     ```
     On lance ensuite la commande `docker compose up -d` qui installe ça.
 
-Et là, ça échoue. Pas de panique, c'est normal.
+Et là, ça échoue. Pas de panique, c'est normal : on ne lui a pas donné les autorisations pour vérifier que le domaine est bien le notre.
