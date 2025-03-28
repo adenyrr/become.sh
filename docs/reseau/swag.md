@@ -51,7 +51,7 @@ Un certain nombre de prérequis sont non-négociables :
 - Un NDD (Nom de Domaine)
 - Le port 443 d'ouvert et redirigé vers l'IP du proxy
 
-### Docker
+### Docker, compose et validation DNS
 
 C'est la *seule* méthode prise en charge. Linuxserver est une communauté basée autour de la publication de conteneurs, il est donc normal de retrouver ceux-ci dans les méthodes recommandées.
 
@@ -81,6 +81,7 @@ Comme d'habitude, le docker-compose est compatible Portainer et Komodo.
         -e DOCKER_MODS=linuxserver/mods:swag-dashboard
         -v ./config:/config \
         -p 443:443 \
+        -p 81:81 \
         --restart unless-stopped \
         lscr.io/linuxserver/swag:latest
     ```
@@ -107,8 +108,95 @@ Comme d'habitude, le docker-compose est compatible Portainer et Komodo.
             - ./config:/config
             ports:
             - 443:443
+            - 81:81
             restart: unless-stopped
     ```
     On lance ensuite la commande `docker compose up -d` qui installe ça.
 
 Et là, ça échoue. Pas de panique, c'est normal : on ne lui a pas donné les autorisations pour vérifier que le domaine est bien le notre.
+
+On vérifie tout d'abord sur le tableau de bord de son domaine que ce dernier pointe bien sur son adresse IP publique. On peut trouver celle-ci sur [des sites dédiés](https://monip.com). Normalement, on devrait avoir un enregistrement dit *"A"* pour une adresse IPv4. Ensuite, on se rend sur [le site API d'OVH](https://eu.api.ovh.com/createToken/) et on entre les autorisations suivantes :
+
+    ```
+    GET /domain/zone/*
+    PUT /domain/zone/*
+    POST /domain/zone/*
+    DELETE /domain/zone/*
+    ```
+
+On défini le temps de validation sur infini. Enfin, on se connecte sur le serveur proxy via SSH (ou on y accède via `docker exec -it swag /bin/bash`) et on cherche le fichier *ovh.ini* dans `./config/dns-conf/ovh.ini` et on le rempli avec les clefs d'API générées sur le site d'OVH.
+
+    ```bash
+    # OVH API credentials used by Certbot
+    dns_ovh_endpoint = ovh-eu
+    dns_ovh_application_key = MDAwMDAwMDAwMDAw
+    dns_ovh_application_secret = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+    dns_ovh_consumer_key = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+    ```
+On enregistre, on retourne dans le repertoire du `compose.yaml` et on relance (ou on peut relancer directement avec la commande `docker run` donnée au dessus.)
+
+    ```sh
+    docker compose up -d
+    ```
+Si tout s'est bien passé, on devrait avoir un tableau de bord sur http://IP:81. Celui-ci n'est qu'indicatif et ne permet que de consulter des statistiques.
+
+A ce stade, on devrait avoir un nom de domaine qui pointe vers l'IP du routeur, le routeur qui récupère le port 443 (HTTPS) et le transmet au serveur proxy.
+
+### Configuration du proxy
+
+Une multitude de templates existent déjà pour exposer certains services. Pour ajouter un proxy, il suffit de se rendre dans le repertoire `./config/nginx/proxy-conf/`. Une commande `ls` permet de découvrir plusieurs dizaines de configurations possibles sous le format *.sample*.
+
+Prenons l'exemple de Home Assistant que l'on veut exposer sur `assist.domain.org`. On commence par créer le sous-domaine `assist` *chez OVH* et on le pointe vers l'IP (champ *A*) ou le domaine, si celui-ci pointe déjà sur l'IP publique (Champ *CNAME*). Une fois le délais de propagation passé (de quelques secondes à plusieurs heures), l'adresse choisie devrait répondre sur `http(s)://assist.domain.org` et une page 404 de SWAG devrait apparaitre. Si tel est le cas, c'est parfait : l'adresse arrive bien sur le proxy.
+
+Dans `./config/nginx/proxy-conf/` on trouve `homeassistant.subdomain.conf.sample` et on le renome en le copiant (pour garder l'original) :
+
+    ```sh
+    cp homeassistant.subdomain.conf.sample assist.subdomain.conf
+    ```
+
+!!! note "Deux renommages"
+
+    On a renommé ici le `homeassistant` en `assist`, soit le sous domaine choisi *ET* on a enlevé le `.sample`.
+
+On ouvre le fichier avec `nano` et on modifie le fichier pour correspondre à notre infra :
+
+```bash
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name assist.*; ## Ici, on change le sous-domaine par celui désiré
+
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 0;
+
+
+    location / {
+       
+        include /config/nginx/proxy.conf;
+        include /config/nginx/resolver.conf;
+        set $upstream_app IP; # Ici, on remplace IP par l'adresse de home assistant
+        set $upstream_port 8123;
+        set $upstream_proto http;
+        proxy_pass $upstream_proto://$upstream_app:$upstream_port;
+
+    }
+
+    location ~ ^/(api|local|media)/ {
+        include /config/nginx/proxy.conf;
+        include /config/nginx/resolver.conf;
+        set $upstream_app IP; # Ici, on remplace IP par l'adresse de home assistant
+        set $upstream_port 8123;
+        set $upstream_proto http;
+        proxy_pass $upstream_proto://$upstream_app:$upstream_port;
+    }
+}
+
+```
+
+On ferme, et ... Après quelques secondes, https://assist.domain.org devrait afficher la page d'acceuil de l'instance Home Assistant. L'instance est maintenant exposée.
+
+## Sécurisation
+
+A venir.
