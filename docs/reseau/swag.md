@@ -68,22 +68,22 @@ Comme d'habitude, le docker-compose est compatible Portainer et Komodo.
 === "Docker"
     
     ``` bash
-        docker run -d \
-        --name swag \
-        --cap-add NET_ADMIN \
-        -e PUID=1000 \
-        -e PGID=1000 \
-        -e TZ=Etc/UTC \
-        -e URL=domaine.com \
-        -e VALIDATION=dns \
-        -e SUBDOMAINS=wildcard \
-        -e DNSPLUGIN=ovh \
-        -e DOCKER_MODS=linuxserver/mods:swag-dashboard
-        -v ./config:/config \
-        -p 443:443 \
-        -p 81:81 \
-        --restart unless-stopped \
-        lscr.io/linuxserver/swag:latest
+    docker run -d \
+    --name swag \
+    --cap-add NET_ADMIN \
+    -e PUID=1000 \
+    -e PGID=1000 \
+    -e TZ=Etc/UTC \
+    -e URL=domaine.com \
+    -e VALIDATION=dns \
+    -e SUBDOMAINS=wildcard \
+    -e DNSPLUGIN=ovh \
+    -e DOCKER_MODS=linuxserver/mods:swag-dashboard
+    -v ./config:/config \
+    -p 443:443 \
+    -p 81:81 \
+    --restart unless-stopped \
+    lscr.io/linuxserver/swag:latest
     ```
 
 === "Docker Compose"
@@ -117,27 +117,28 @@ Et là, ça échoue. Pas de panique, c'est normal : on ne lui a pas donné les a
 
 On vérifie tout d'abord sur le tableau de bord de son domaine que ce dernier pointe bien sur son adresse IP publique. On peut trouver celle-ci sur [des sites dédiés](https://monip.com). Normalement, on devrait avoir un enregistrement dit *"A"* pour une adresse IPv4. Ensuite, on se rend sur [le site API d'OVH](https://eu.api.ovh.com/createToken/) et on entre les autorisations suivantes :
 
-    ```
-    GET /domain/zone/*
-    PUT /domain/zone/*
-    POST /domain/zone/*
-    DELETE /domain/zone/*
-    ```
+```
+GET /domain/zone/*
+PUT /domain/zone/*
+POST /domain/zone/*
+DELETE /domain/zone/*
+```
 
 On défini le temps de validation sur infini. Enfin, on se connecte sur le serveur proxy via SSH (ou on y accède via `docker exec -it swag /bin/bash`) et on cherche le fichier *ovh.ini* dans `./config/dns-conf/ovh.ini` et on le rempli avec les clefs d'API générées sur le site d'OVH.
 
-    ```bash
-    # OVH API credentials used by Certbot
-    dns_ovh_endpoint = ovh-eu
-    dns_ovh_application_key = MDAwMDAwMDAwMDAw
-    dns_ovh_application_secret = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
-    dns_ovh_consumer_key = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
-    ```
+```bash
+# OVH API credentials used by Certbot
+dns_ovh_endpoint = ovh-eu
+dns_ovh_application_key = MDAwMDAwMDAwMDAw
+dns_ovh_application_secret = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+dns_ovh_consumer_key = MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw
+```
 On enregistre, on retourne dans le repertoire du `compose.yaml` et on relance (ou on peut relancer directement avec la commande `docker run` donnée au dessus.)
 
-    ```sh
-    docker compose up -d
-    ```
+```sh
+docker compose up -d
+```
+
 Si tout s'est bien passé, on devrait avoir un tableau de bord sur http://IP:81. Celui-ci n'est qu'indicatif et ne permet que de consulter des statistiques.
 
 A ce stade, on devrait avoir un nom de domaine qui pointe vers l'IP du routeur, le routeur qui récupère le port 443 (HTTPS) et le transmet au serveur proxy.
@@ -150,9 +151,9 @@ Prenons l'exemple de Home Assistant que l'on veut exposer sur `assist.domain.org
 
 Dans `./config/nginx/proxy-conf/` on trouve `homeassistant.subdomain.conf.sample` et on le renome en le copiant (pour garder l'original) :
 
-    ```sh
-    cp homeassistant.subdomain.conf.sample assist.subdomain.conf
-    ```
+```sh
+cp homeassistant.subdomain.conf.sample assist.subdomain.conf
+```
 
 !!! note "Deux renommages"
 
