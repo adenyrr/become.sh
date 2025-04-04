@@ -212,3 +212,40 @@ Les valeurs par défaut sont idéales pour la protection anti-bot. Les modifier 
 
 ### Crowdsec
 
+Un outil formidable pour augmenter la sécurité est [crowdsec](https://www.crowdsec.net/), qui permet de bannir des adresses IP soit à partir d'un comportement anormal tel qu'un scan de ports ouverts ou à partir de listes d'adresses réputées malveillantes.
+
+Pour l'utliser, il faut d'abord modifier le *compose.yaml* ou la commande *docker* exécutée et y ajouter le conteneur `crowdsec` :
+
+```yaml
+- DOCKER_MODS=linuxserver/mods:swag-dashboard|DOCKER_MODS=linuxserver/mods:swag-crowdsec
+- CROWDSEC_LAPI_URL=http://crowdsec:8080
+- CROWDSEC_API_KEY=
+# On ajoute un 'pipe' puis le mod à ajouter : crowdsec
+# Puis on ajoute, toujours dans cette section, les arguments obligatoires du nouveau conteneur mais en laissant vide l'API pour l'instant.
+```
+
+Dans la section `ports`, on ajoute une ligne avec `8080:8080` pour crowdsec.
+
+On relance le compose avec *`docker compose stop && docker compose up -d`* puis on vérifie que crowdsec est bien présent avec `docker ps` qui permet de lister les conteneurs actifs.
+
+Bien que le conteneur soit maintenant présent, il faut lui donner les logs de SWAG à analyser. On modifie le fichier `./config/nginx/nginx.conf` et dans le bas, on ajoute, en dessous de la ligne commentée :
+
+```sh
+# Includes virtual hosts configs.
+include /etc/nginx/http.d/*.conf;
+```
+
+On valide puis on enregistre le *bouncer* (l'analyseur de logs) sur l'API du conteneur crowdsec, qui va renvoyer une valeur à conserver : 
+
+```sh
+docker exec -t crowdsec cscli bouncers add bouncer-swag
+```
+
+Pour terminer, on reprend une dernière fois notre *compose.yaml* pour y entrer la clef d'API de crowdsec. On modifie donc la ligne concernée puis on relance le compose (ou la commande docker complète) une dernière fois :
+
+```sh
+docker compose stop
+docker compose up -d
+```
+
+Crowdsec est maintenant installé.
