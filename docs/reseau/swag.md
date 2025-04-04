@@ -200,4 +200,15 @@ On ferme, et ... Après quelques secondes, https://assist.domain.org devrait aff
 
 ## Sécurisation
 
-A venir.
+### Fail2Ban
+
+Par défaut, le conteneur SWAG contient l'outil fail2ban qui permet de bannir une adresse IP en cas de tentative de brute-force. Après 3 tentatives de login incorrectes, f2b va bannir l'adresse IP concernée pour une durée de 600 secondes par défaut.
+
+Pour modifier le nombre de tentatives avant un bannissement ou la durée de celui-ci, il suffit de se rendre dans le fichier `./config/fail2ban/jail.local` et de modifier les valeurs *BANTIME* ou *MAXRETRY*.
+
+!!! warning " Valeurs par défaut "
+
+Les valeurs par défaut sont idéales pour la protection anti-bot. Les modifier peut entrainer des risques d'attaque, notamment en modifiant la valeur *MAXRETRY*.
+
+### Crowdsec
+
