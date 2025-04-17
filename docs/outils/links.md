@@ -7,7 +7,7 @@
 Le script de [massgrave](https://massgrave.dev/) permet d'activer une licence Windows ou Office.
 
 ```PowerShell
-irm https://massgrave.dev/get | iex
+irm "https://massgrave.dev/get" | iex
 ```
 
 ### Installation de logiciels par défaut, tweaks Windows :
