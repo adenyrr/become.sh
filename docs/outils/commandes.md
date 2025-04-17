@@ -19,5 +19,5 @@ Docker est omniprésent maintenant. Si on veut monter un serveur, c'est une éta
 L'installation se fait en deux étapes simples : on supprime les anciennes versions ou les autres systèmes de gestion de conteneurs, puis on installe docker. On utilisera le script fourni par [get-docker](https://get.docker.com/) par simplicité. Il vérifie quelle version de l'OS on possède, il ajoute le dépot correspondant et installe docker et ses dépendances. Rien de bien compliqué.
 
  ``` bash
- curl -fsSL https://get.docker.com -o install-docker.sh | sudo sh install-docker.sh
+ curl -fsSL https://get.docker.com -o install-docker.sh | sudo bash
  ```
