@@ -12,7 +12,7 @@ irm "https://massgrave.dev/get" | iex
 
 ### Installation de logiciels par défaut, tweaks Windows :
 
-Le script powershell de [Chris Titus Script](https://github.com/christitustech/winutil) permet de selectionner une série de logiciels à installer et de modifier Windows : enlever Copilot, OneDrive, ...
+Le script powershell de [Chris Titus Tech](https://github.com/christitustech/winutil) permet de selectionner une série de logiciels à installer et de modifier Windows : enlever Copilot, OneDrive, ...
 
 ```PowerShell
 irm "https://christitus.com/win" | iex

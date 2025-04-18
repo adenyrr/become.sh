@@ -131,7 +131,7 @@ On crée un utilisateur qui sera admin, on ajoute le répertoire choisi, on déf
 ### Skins && add-ons
 
 J'utilise le skin suivant (à ajouter à Tableau de bord > Général > Code CSS personalisé)
-``` CSS
+```CSS
 @import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/finimalism7.css");
 @import url("https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/libraryCardAriaText.css");
 ```
