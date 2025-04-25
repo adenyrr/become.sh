@@ -2,7 +2,7 @@
 
 ### Avant-propos
 
-Si certains services comme [Ollama](https://wiki.become.sh/services/ollama/) peuvent rester uniquement en local, d'autres comme [Home Assistant](https://wiki.become.sh/services/hassio/) gagnent à être exposés, afin de pouvoir etre utilisés en déplacement.
+Si certains services comme [Ollama](https://wiki.become.sh/services/ollama/) peuvent rester uniquement en local, d'autres comme [Home Assistant](https://wiki.become.sh/hassio/install.md) gagnent à être exposés, afin de pouvoir etre utilisés en déplacement.
 Plusieurs solutions sont possibles comme l’utilisation d'un VPN ou le recours à un reverse-proxy. C'est cette dernière que l'on abordera ici.
 
 ### C'est quoi ?
@@ -32,7 +32,7 @@ Plusieurs solutions sont possibles comme l’utilisation d'un VPN ou le recours 
 
 Les alternatives les plus connues sont :
 
-- [Traefik](hhttps://doc.traefik.io/traefik/) : open-source
+- [Traefik](https://doc.traefik.io/traefik/) : open-source
 - [HAProxy](https://www.haproxy.org/) : open-source
 - [Caddy](https://caddyserver.com/) : open-source
   

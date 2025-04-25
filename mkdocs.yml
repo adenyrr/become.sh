@@ -8,6 +8,8 @@ nav:
     - Exposer avec SWAG: reseau/swag.md
   - Virtualisation:
     - Installer Proxmox PVE : virtu/pve.md
+  - Home Assistant:
+    - Installer Home Assistant: hassio/install.md
   - Services:
     - IA locale avec Ollama: services/ollama.md
     - Streaming avec Jellyfin : services/jellyfin.md
