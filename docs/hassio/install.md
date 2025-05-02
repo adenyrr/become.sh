@@ -2,11 +2,11 @@
 
 ### Avant-propos
 
-Home assistant est un
+Qui n'a jamais rêvé d'avoir son propre Jarvis ? De contrôler les lumières chez soi, d'un claquement de doigts ou d'une simple phrase ? Home Assistant est probablement ce qui s'en rapproche le plus, tout en restant sous un contrôle absolu.
 
 ### C'est quoi ?
 
-[Hassio](https://www.home-assistant.io/) ou Home Assistant OS est un système d'exploitation cmplet permettant de controler la plupart des appareils connectés, de centraliser des actions et de faciliter l'automatisation en rassemblant le tout dans une seule interface.
+[Hassio](https://www.home-assistant.io/) ou Home Assistant OS est un système d'exploitation complet permettant de controler la plupart des appareils connectés, de centraliser des actions et de faciliter l'automatisation en rassemblant toutes ces fonctionnalités dans une seule interface, extensible et personnalisable.
 
 !!! quote "Elle se défini elle-même par :"
 
