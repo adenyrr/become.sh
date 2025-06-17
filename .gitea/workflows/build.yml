@@ -41,3 +41,7 @@ jobs:
           pip install -q -r ./requirements.txt
           echo "Building mkdocs"
           python -m mkdocs build -f ./mkdocs.yml -d /site
+      #EDIT
+      - name: Save artifacts
+        run: |
+          cp -r ./site/* /workspace/output/
