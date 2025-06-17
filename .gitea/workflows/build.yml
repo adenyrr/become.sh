@@ -44,4 +44,4 @@ jobs:
       #EDIT
       - name: Save artifacts
         run: |
-          cp -r ./site/* /workspace/output/
+          cp -r /site/* /workspace/output/
