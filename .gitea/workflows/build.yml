@@ -10,6 +10,7 @@ on:
       - main
       - master
 
+
 # define the jobs (tasks) to do when trigger occurs
 jobs:
   Build-Docs: # name of job, can be any non-spaced string
