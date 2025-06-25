@@ -16,7 +16,7 @@
 
 ### Windhawk
 
-[Windhawk](https://github.com/ramensoftware/windhawk) est un installateur et gestionnaire de mods et tweaks pour Windows. AJoute de nombreuses QoLet peut en modifier l'aspect et le comportement.
+[Windhawk](https://github.com/ramensoftware/windhawk) est un installateur et gestionnaire de mods pour Windows, qui peut en modifier l'aspect et le comportement. Ajoute de nombreuses QoL.
 
 
 
