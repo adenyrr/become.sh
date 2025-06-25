@@ -8,7 +8,7 @@
 
 ### WinGetUI
 
-[WinGetUI]([https://massgrave.dev/](https://github.com/marticliment/UniGetUI)) permet d'installer des paquets pour Windows depuis plusieurs stores / repos (Chocolatey, pip, scoop, winget, ...).
+[WinGetUI](https://github.com/marticliment/UniGetUI) permet d'installer des paquets pour Windows depuis plusieurs stores / repos (Chocolatey, pip, scoop, winget, ...).
 
 ### FlowLauncher
 
