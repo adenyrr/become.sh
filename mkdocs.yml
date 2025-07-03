@@ -1,5 +1,6 @@
 site_name: become.sh
 docs_dir: './docs'
+site_url: https://docs.become.sh
 
 nav:
   - Home:
