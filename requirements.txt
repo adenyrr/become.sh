@@ -5,3 +5,4 @@ markdown-full-yaml-metadata
 pymdown-extensions
 mkdocs-awesome-pages-plugin
 material-plausible-plugin
+mkdocs-material[imaging]
