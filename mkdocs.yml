@@ -70,6 +70,7 @@ plugins:
   - search
   - awesome-pages
   - material-plausible
+  - social
   
 repo_url: https://github.com/adenyrr/become.sh
 
