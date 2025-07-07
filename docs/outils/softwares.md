@@ -10,12 +10,14 @@ Mes ordinateurs portables sont sous [CachyOS](https://cachyos.org/), un dérivé
    - [µBlockOrigin](https://ublockorigin.com/fr) : bloqueur de pub léger et efficace propulsé par une communauté réactive, tant sur le dev que les listes de blocages.
    - [BitWarden](https://bitwarden.com/download/) : un gestionnaire de mot de passe qui se synchronise sur mon instance locale privée.
    - [Page-Assist](https://github.com/n4ze3m/page-assist) : me permet de dialoguer avec mon instance Ollama privée, directement au sein d'une page web.
+   - [Ghostery](https://addons.mozilla.org/fr/firefox/addon/ghostery/) : Permet d'avoit l'auto-consent sur les bannières de cookies, en désactivant les choix optionnels par défaut, en plus d'éviter le tracking inter-sites.
+   - [ClearURL](https://addons.mozilla.org/fr/firefox/addon/clearurls) : permet de supprimer automatiquement les trackers liés aux URL.
 
 Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](https://librewolf.net/), plutôt accès sur la vie privée, ou [ZenBrowser.](https://zen-browser.app/) plutôt accès sur la personnalisation et la productivité.
 
 ### Signal
 
-[Signal](https://signal.org/fr/) est un système de messagerie instantanée entièrement chiffrée créé par les fondateurs de Whatsapp, après le rachat de cleui-ci par Méta. 
+[Signal](https://signal.org/fr/) est un système de messagerie instantanée entièrement chiffrée créé par les fondateurs de Whatsapp, après le rachat de ce dernier par Méta. 
 
 ## Linux
 
@@ -39,6 +41,12 @@ Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](h
 ### VSCodium
 [VSCodium](https://vscodium.com/) est un fork, entièrement opensource, de Visual Studio Code, par Microsoft. Il est extensible et contient de nombreux thèmes.
 
+### Rufus
+[Rufus](https://rufus.ie/fr/) est un utilitaire de création d'USB bootables. Il est rapide et prend en charge énormément de systèmes.
+
+### Tabby
+[Tabby](https://tabby.sh/) est un émulateur de terminal prenant en charge telnet, ssh, powershell, cmd, ...
+
 ## Android
 
 ### Material Files
@@ -47,7 +55,7 @@ Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](h
 ### ReVanced Manager
 [RVM](https://vanced.to/revanced-manager) permet d'installer des apk patchées, notamment pour Youtube ou Spotify.
 
-!!! attention "Possible SCAM"
+!!! warning "Possible SCAM"
 
     RVM n'est pas directement affilé à reVanced Patcher, qui lui est sur github. Bien qu'il semble utiliser leurs patchs et que les connexions DNS ne montrent aucune activité anormale, il est *possible* que ça soit un SCAM.
 
