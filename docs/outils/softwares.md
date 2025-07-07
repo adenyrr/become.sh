@@ -42,4 +42,5 @@ Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](h
 
 [Cx-Explorateur de fichiers](https://play.google.com/store/apps/details?id=com.cxinventor.file.explorer&hl=fr) est une application qui permet de naviguer dans les dossiers android et distant facilement, et sans pubs. 
 
-    !!! warning "N'est pas open-source"
+!!! warning "N'est pas open-source"
+
