@@ -36,11 +36,19 @@ Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](h
 ### Files
 [Files](https://github.com/files-community/Files) est un remplaçant du "Gestionnaire de fichiers" indépendant et opensource.
 
+### VSCodium
+[VSCodium](https://vscodium.com/) est un fork, entièrement opensource, de Visual Studio Code, par Microsoft. Il est extensible et contient de nombreux thèmes.
+
 ## Android
 
-### CXExplorer
+### Material Files
+[Material Files](https://play.google.com/store/apps/details?id=me.zhanghai.android.files) est une application qui permet de naviguer dans les dossiers android et distants facilement, et sans pubs.
 
-[Cx-Explorateur de fichiers](https://play.google.com/store/apps/details?id=com.cxinventor.file.explorer&hl=fr) est une application qui permet de naviguer dans les dossiers android et distant facilement, et sans pubs. 
+### ReVanced Manager
+[RVM](https://vanced.to/revanced-manager) permet d'installer des apk patchées, notamment pour Youtube ou Spotify.
 
-!!! warning "N'est pas open-source"
+!!! attention "Possible SCAM"
+
+    RVM n'est pas directement affilé à reVanced Patcher, qui lui est sur github. Bien qu'il semble utiliser leurs patchs et que les connexions DNS ne montrent aucune activité anormale, il est *possible* que ça soit un SCAM.
+
 
