@@ -24,4 +24,4 @@ irm "https://christitus.com/win" | iex
 
 # Awesome Lists
 
-- [Awwesome](https://awweso.me/) : une liste de services et applications à auto-héberger, catégorisés et classés par popularité.
+- [Awwesome](https://awweso.me/) : une liste de services et applications à auto-héberger, catégorisé.e.s et classé.e.s par popularité.

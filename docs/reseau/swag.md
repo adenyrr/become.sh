@@ -208,7 +208,7 @@ Pour modifier le nombre de tentatives avant un bannissement ou la durée de celu
 
 !!! warning " Valeurs par défaut "
 
-Les valeurs par défaut sont idéales pour la protection anti-bot. Les modifier peut entrainer des risques d'attaque, notamment en modifiant la valeur *MAXRETRY*.
+    Les valeurs par défaut sont idéales pour la protection anti-bot. Les modifier peut entrainer des risques d'attaque, notamment en modifiant la valeur *MAXRETRY*.
 
 ### Crowdsec
 
