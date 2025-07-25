@@ -53,10 +53,5 @@ Il existe plusieurs navigateurs dérivés directement de Firefox : [LibreWolf](h
 [Material Files](https://play.google.com/store/apps/details?id=me.zhanghai.android.files) est une application qui permet de naviguer dans les dossiers android et distants facilement, et sans pubs.
 
 ### ReVanced Manager
-[RVM](https://vanced.to/revanced-manager) permet d'installer des apk patchées, notamment pour Youtube ou Spotify.
-
-!!! warning "Possible SCAM"
-
-    RVM n'est pas directement affilé à reVanced Patcher, qui lui est sur github. Bien qu'il semble utiliser leurs patchs et que les connexions DNS ne montrent aucune activité anormale, il est *possible* que ça soit un SCAM.
-
+[RVM](https://github.com/vancedapps/rv-manager) permet d'installer des apk patchées, notamment pour Youtube ou Spotify.
 
