@@ -12,7 +12,7 @@ L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est lim
 
 !!! tip "Source ?"
 
-  J'utilise l'intégration de l'[IRM](https://github.com/jdejaegh/irm-kmi-ha), puisque je suis belge. Pour les autres, [AccuWeather](https://www.home-assistant.io/integrations/accuweather/) fourni les concentrations précises et le niveau de danger associé.
+    J'utilise l'intégration de l'[IRM](https://github.com/jdejaegh/irm-kmi-ha), puisque je suis belge. Pour les autres, [AccuWeather](https://www.home-assistant.io/integrations/accuweather/) fourni les concentrations précises et le niveau de danger associé.
 
 <figure markdown="span">
   ![Header](https://raw.githubusercontent.com/adenyrr/become.sh/3ebd2f09bc567be2149ef95f435b3b3f7363f264/docs/assets/hassio/header.png)
@@ -21,7 +21,7 @@ L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est lim
 
 Chacun des pollens mesurés possède son propre badge, dont voici le code :
 
-  ~~~ yaml
+``` yaml
 type: entity # Simple badge entité
 show_name: true # On affiche le nom du pollen incriminé
 show_state: false # Le nom suffit, pas besoin de la valeur précise
@@ -40,4 +40,4 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
   - condition: state
     entity: sensor.maison_grasses_level
     state_not: unknown
-  ~~~
+```
