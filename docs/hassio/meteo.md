@@ -45,7 +45,7 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
   ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/meteonow.png)
 </figure>
 
-La météo actuelle est donnée par l'intégration IRM. France-Météo fourni à peu près les mêmes informations. Les informations manquantes depuis l'IRM sont récupérées par tomorrow.io et AccuWeather. Enfin, la carte est la Platinium Weather Card, disponible sur HACS.
+La météo actuelle est donnée par l'intégration [IRM](https://github.com/jdejaegh/irm-kmi-ha) (disponible sur HACS). France-Météo fourni à peu près les mêmes informations. Les informations manquantes depuis l'[IRM](https://github.com/jdejaegh/irm-kmi-ha) sont récupérées par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/) et [AccuWeather.](https://www.home-assistant.io/integrations/accuweather/) Enfin, la carte est la [Platinium Weather Card](https://github.com/tommyjlong/platinum-weather-card), disponible sur HACS.
 
 ??? tip "Trop de code tue le code"
 
@@ -96,9 +96,9 @@ La météo actuelle est donnée par l'intégration IRM. France-Météo fourni à
     type: custom:platinum-weather-card
     ```
 
-Les prévisions sont séparées en deux cartes: l'une pour les prochaines heures, l'autre pour les jours suivants. Dans les deux cas, la carte est fournie par Weather Chart Card, disponible sur HACS.
+Les prévisions sont séparées en deux cartes: l'une pour les prochaines heures, l'autre pour les jours suivants. Dans les deux cas, la carte est fournie par [Weather Chart Card](https://github.com/mlamberts78/weather-chart-card), disponible sur HACS.
 
-Les prévisions pour les prochaines heures sont fournies par tomorrow.io, que je trouve plus proche de la réalité.
+Les prévisions pour les prochaines heures sont fournies par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/), que je trouve plus proche de la réalité.
 
 <figure markdown="span">
   ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecasthours.png)
@@ -148,7 +148,7 @@ Les prévisions pour les prochaines heures sont fournies par tomorrow.io, que je
       speed: ""
     ```
 
-Les prévisions pour les prochains jours sont fournies, elles, par AccuWeather, généralement plus pertinent sur le moyen terme. La carte est exactement la même, il suffit d'adapter le paramètre `forecast:type`.
+Les prévisions pour les prochains jours sont fournies, elles, par [AccuWeather](https://www.home-assistant.io/integrations/accuweather/), généralement plus pertinent sur le moyen terme. La carte est exactement la même, il suffit d'adapter le paramètre `forecast:type`.
 
 <figure markdown="span">
   ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecastdays.png)
@@ -164,7 +164,7 @@ Les prévisions pour les prochains jours sont fournies, elles, par AccuWeather, 
   ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/radars.png)
 </figure>
 
-J'utilise les cartes en temps réel fournies par le site Windy. Elles sont au nombre de 4 : Vents, Pluie, Températures et risques incendies, intégrées par un iframe.
+J'utilise les cartes en temps réel fournies par le site [Windy](https://embed.windy.com/config/map). Elles sont au nombre de 4 : Vents, Pluie, Températures et risques incendies, intégrées par un iframe.
 
 ``` yaml
 type: iframe
