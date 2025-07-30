@@ -13,7 +13,7 @@ L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est lim
     J'utilise l'intégration de l'[IRM](https://github.com/jdejaegh/irm-kmi-ha), puisque je suis belge. Pour les autres, [AccuWeather](https://www.home-assistant.io/integrations/accuweather/) fourni les concentrations précises et le niveau de danger associé.
 
 <figure markdown="span">
-  ![Header](https://raw.githubusercontent.com/adenyrr/become.sh/3ebd2f09bc567be2149ef95f435b3b3f7363f264/docs/assets/hassio/header.png)
+  ![Header](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/header.png)
 </figure>
 
 Chacun des pollens mesurés possède son propre badge, dont voici le code :
