@@ -38,8 +38,7 @@ Les alternatives les plus connues sont :
 
 !!! note " Plein de méthodes ... "
 
-    Home Assistant est *très* permissif sur ses méthodes d'installation. Pour commencer, il existe plusieurs versions de Home Assistant : core (qui est un ensemble d'exécutables en python); en conteneur (sous docker, mais on perd alors plusieurs fonctionnalités) ou en système d'exploitation complet. Ici, ça sera le système d'exploitation complet afin de profiter de l'ensemble des fonctionnalités proposées par Home Assistant.
-    Ceci dit, ici encore, on a le choix. Il peut etre installé sur raspberry pi, odroid ou directement sur un ordinateur utilisé comme serveur. Ici, c'est une VM sous [proxmox](https://docs.become.sh/virtu/pve.md) qui sera utilisée. La procédure est strictement la meme, peu importe le support.
+    Home Assistant est *très* permissif sur ses méthodes d'installation. Il peut etre installé sur raspberry pi, odroid ou directement sur un ordinateur utilisé comme serveur, via docker ou une machine virtuelle complète. Ici, c'est une VM sous [proxmox](https://docs.become.sh/virtu/pve.md) qui sera utilisée. Celle-ci dispose de 2c/4Go/32Go.
     
 
 ### Prérequis

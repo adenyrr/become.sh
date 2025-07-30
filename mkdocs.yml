@@ -12,6 +12,8 @@ nav:
     - Installer Proxmox PVE : virtu/pve.md
   - Home Assistant:
     - Installer Home Assistant: hassio/install.md
+    - Ajouter HACS: hassio/hacs.md
+    - Onglet météo: hassio/meteo.md
   - Services:
     - IA locale avec Ollama: services/ollama.md
     - Streaming avec Jellyfin : services/jellyfin.md
@@ -103,12 +105,14 @@ copyright: CC - BY/NC (adenyr)
 
 markdown_extensions:
   - admonition
+  - attr_list
   - def_list
   - md_in_html
   - pymdownx.arithmatex
   - pymdownx.b64
   - pymdownx.betterem
   - pymdownx.blocks.admonition
+  - pymdownx.blocks.caption
   - pymdownx.blocks.definition
   - pymdownx.blocks.details
   - pymdownx.blocks.html
@@ -137,3 +141,5 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
   - full_yaml_metadata
+
+
