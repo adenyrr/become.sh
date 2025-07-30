@@ -1,5 +1,3 @@
-## Faire un onglet dédié à la météo
-
 ### Introduction
 
 ### Mise en page
@@ -16,7 +14,6 @@ L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est lim
 
 <figure markdown="span">
   ![Header](https://raw.githubusercontent.com/adenyrr/become.sh/3ebd2f09bc567be2149ef95f435b3b3f7363f264/docs/assets/hassio/header.png)
-  <figcaption>En-tête de l'onglet météo : Alertes et allergies</figcaption>
 </figure>
 
 Chacun des pollens mesurés possède son propre badge, dont voici le code :
@@ -40,4 +37,27 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
   - condition: state
     entity: sensor.maison_grasses_level
     state_not: unknown
+```
+
+### Première colonne : Météo temps réel et prévisions
+
+
+
+### Deuxième colonne :
+
+### Troisième et quatrième colonnes : Cartes en temps réél
+
+<figure markdown="span">
+  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/radars.png)
+</figure>
+
+J'utilise les cartes en temps réel fournies par le site Windy. Elles sont au nombre de 4 : Vents, Pluie, Températures et risques incendies, intégrées par un iframe.
+
+``` yaml
+type: iframe
+url: >-
+  https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=m/s&zoom=9&overlay=wind&product=ecmwf&level=surface&lat=50.45&lon=4.9&detailLat=50.45&detailLon=4.9&marker=true&message=true
+grid_options:
+  columns: 12
+  rows: 6
 ```
