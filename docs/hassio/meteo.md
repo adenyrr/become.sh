@@ -154,6 +154,14 @@ Les prévisions pour les prochains jours sont fournies, elles, par [AccuWeather]
   ![ForecastDays](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecastdays.png)
 </figure>
 
+### Deuxième colonne : Environnement extérieur
+
+Une jauge indique l'indice UV, maximum et actuel, mis à jour toutes les heures. Les données sont fournies par [Open-UV](https://www.home-assistant.io/integrations/openuv/), la carte étant une [Gauge Card Pro](https://github.com/benjamin-dcs/gauge-card-pro).
+
+<figure markdown="span">
+  ![UVGauge](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/indiceUV.png)
+</figure>
+
 ??? tip "Trop de code tue le code"
 
     ```yaml
@@ -309,16 +317,6 @@ La qualité de l'air est fournie par l'intégration [WAQI](https://www.home-assi
           - entity: sensor.namur_belgium_nitrogen_dioxide
             name: NO2
     ```
-
-### Deuxième colonne : Environnement extérieur
-
-Une jauge indique l'indice UV, maximum et actuel, mis à jour toutes les heures. Les données sont fournies par [Open-UV](https://www.home-assistant.io/integrations/openuv/), la carte étant une [Gauge Card Pro](https://github.com/benjamin-dcs/gauge-card-pro)
-
-<figure markdown="span">
-  ![UVGauge](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/indiceUV.png)
-</figure>
-
-
 
 ### Troisième et quatrième colonnes : Cartes en temps réél
 
