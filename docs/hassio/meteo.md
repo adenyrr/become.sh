@@ -41,6 +41,119 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
 
 ### Première colonne : Météo temps réel et prévisions
 
+<figure markdown="span">
+  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/meteonow.png)
+</figure>
+
+La météo actuelle est donnée par l'intégration IRM. France-Météo fourni à peu près les mêmes informations. Les informations manquantes depuis l'IRM sont récupérées par tomorrow.io et AccuWeather. Enfin, la carte est la Platinium Weather Card, disponible sur HACS.
+
+??? tip "Trop de code tue le code"
+
+    ```yaml
+    custom1_icon: mdi:cloud
+    custom1_units: "%"
+    custom1_value: sensor.maison_couverture_nuageuse
+    entity_apparent_temp: sensor.maison_temperature_apparente
+    entity_fire_danger: sensor.tomorrow_io_maison_indice_d_incendie
+    entity_forecast_icon: weather.maison
+    entity_forecast_max: sensor.maison_realfeel_temperature_max_day_0
+    entity_forecast_min: sensor.maison_realfeel_temperature_min_day_0
+    entity_humidity: sensor.namur_belgium_humidite
+    entity_pop: sensor.maison_precipitation
+    entity_pos: sensor.maison_precipitation
+    entity_pressure: sensor.maison_current_pressure
+    entity_summary: sensor.maison_condition_day_0
+    entity_sun: sun.sun
+    entity_temperature: sensor.maison_temperature
+    entity_uv_alert_summary: sensor.maison_current_uv_index
+    entity_wind_bearing: sensor.maison_current_wind_bearing
+    entity_wind_gust: sensor.maison_vitesse_des_rafales
+    entity_wind_speed: sensor.maison_current_wind_speed
+    option_locale: fr
+    section_order:
+      - overview
+      - extended
+      - slots
+      - daily_forecast
+    show_section_extended: false
+    slot_l1: forecast_max
+    slot_l2: pressure
+    slot_l3: sun_next
+    slot_l4: wind
+    slot_l5: remove
+    slot_l6: remove
+    slot_l7: remove
+    slot_l8: remove
+    slot_r1: forecast_min
+    slot_r2: popforecast
+    slot_r3: sun_following
+    slot_r4: custom1
+    slot_r5: remove
+    slot_r6: remove
+    slot_r7: remove
+    slot_r8: remove
+    text_card_title: Météo actuelle
+    type: custom:platinum-weather-card
+    ```
+
+Les prévisions sont séparées en deux cartes: l'une pour les prochaines heures, l'autre pour les jours suivants. Dans les deux cas, la carte est fournie par Weather Chart Card, disponible sur HACS.
+
+Les prévisions pour les prochaines heures sont fournies par tomorrow.io, que je trouve plus proche de la réalité.
+
+<figure markdown="span">
+  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecasthours.png)
+</figure>
+
+??? tip "Trop de code tue le code"
+
+    ```yaml
+    type: custom:weather-chart-card
+    entity: weather.tomorrow_io_maison_daily
+    show_main: false
+    show_temperature: false
+    show_current_condition: false
+    show_attributes: false
+    show_time: false
+    show_time_seconds: false
+    show_day: false
+    show_date: false
+    show_humidity: false
+    show_pressure: false
+    show_wind_direction: true
+    show_wind_speed: true
+    show_sun: true
+    show_feels_like: false
+    show_dew_point: false
+    show_wind_gust_speed: false
+    show_visibility: false
+    show_last_changed: false
+    use_12hour_format: false
+    icons_size: 25
+    animated_icons: true
+    icon_style: style1
+    autoscroll: true
+    forecast:
+      precipitation_type: rainfall
+      show_probability: false
+      labels_font_size: "11"
+      precip_bar_size: "100"
+      style: style1
+      show_wind_forecast: true
+      condition_icons: true
+      round_temp: false
+      type: hourly
+      number_of_forecasts: "0"
+      disable_animation: false
+    units:
+      speed: ""
+    ```
+
+Les prévisions pour les prochains jours sont fournies, elles, par AccuWeather, généralement plus pertinent sur le moyen terme. La carte est exactement la même, il suffit d'adapter le paramètre `forecast:type`.
+
+<figure markdown="span">
+  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecastdays.png)
+</figure>
+
 
 
 ### Deuxième colonne :
