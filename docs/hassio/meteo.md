@@ -42,7 +42,7 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
 ### Première colonne : Météo temps réel et prévisions
 
 <figure markdown="span">
-  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/meteonow.png)
+  ![MétéoNow](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/meteonow.png)
 </figure>
 
 La météo actuelle est donnée par l'intégration [IRM](https://github.com/jdejaegh/irm-kmi-ha) (disponible sur HACS). France-Météo fourni à peu près les mêmes informations. Les informations manquantes depuis l'[IRM](https://github.com/jdejaegh/irm-kmi-ha) sont récupérées par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/) et [AccuWeather.](https://www.home-assistant.io/integrations/accuweather/) Enfin, la carte est la [Platinium Weather Card](https://github.com/tommyjlong/platinum-weather-card), disponible sur HACS.
@@ -101,7 +101,7 @@ Les prévisions sont séparées en deux cartes: l'une pour les prochaines heures
 Les prévisions pour les prochaines heures sont fournies par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/), que je trouve plus proche de la réalité.
 
 <figure markdown="span">
-  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecasthours.png)
+  ![ForecastHours](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecasthours.png)
 </figure>
 
 ??? tip "Trop de code tue le code"
@@ -151,12 +151,174 @@ Les prévisions pour les prochaines heures sont fournies par [tomorrow.io](https
 Les prévisions pour les prochains jours sont fournies, elles, par [AccuWeather](https://www.home-assistant.io/integrations/accuweather/), généralement plus pertinent sur le moyen terme. La carte est exactement la même, il suffit d'adapter le paramètre `forecast:type`.
 
 <figure markdown="span">
-  ![Radars](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecastdays.png)
+  ![ForecastDays](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/forecastdays.png)
+</figure>
+
+??? tip "Trop de code tue le code"
+
+    ```yaml
+    type: custom:gauge-card-pro
+    segments:
+      - from: 0
+        color: var(--green-color)
+      - from: 3
+        color: rgb(255, 255, 0)
+      - from: 5
+        color: "#FFA500"
+      - from: 7
+        color: red
+    needle: true
+    needle_color: "#111"
+    gradient: true
+    min: 0
+    max: 10
+    titles:
+      primary: Indice UV
+    grid_options:
+      columns: 6
+      rows: 3
+    setpoint:
+      value: "{{ states(entity2) }}"
+      color: "#111"
+      type: template
+    inner:
+      mode: severity
+      segments:
+        - from: 0
+          color: var(--green-color)
+        - from: 3
+          color: rgb(255, 255, 0)
+        - from: 5
+          color: "#FFA500"
+        - from: 7
+          color: red
+      gradient: true
+      gradient_resolution: medium
+    value_texts:
+      primary_font_size_reduction: 5.5
+      primary: "Actuel : {{ states(entity) }}"
+      secondary: "Max : {{ states(entity2) }}"
+    gradient_resolution: medium
+    entity: sensor.openuv_indice_uv_actuel
+    entity2: sensor.openuv_indice_uv_maximal
+    ```
+
+??? warning "Pas d'auto-update"
+
+    L'entité n'est pas mise à jour automatiquement. Pour cela, il suffit de créer une automatisation dans la section appropriée.
+    ```yaml
+    alias: Update OpenUV
+    description: ""
+    triggers:
+      - trigger: time_pattern
+        minutes: /60
+    conditions:
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        above: 10
+    actions:
+      - action: homeassistant.update_entity
+        target:
+          entity_id: sensor.openuv_indice_uv_actuel
+        data: {}
+    ```
+
+La qualité de l'air est fournie par l'intégration [WAQI](https://www.home-assistant.io/integrations/waqi/). Les données sont mises en forme de manière un peu particulières: c'est une pile verticale, dans son titre une carte conditionnelle affiche le polluant principal, des [Bubble Card](https://github.com/Clooos/Bubble-Card) indiquent, dans une pile horizontale, la concentration de chaque polluant. Ces données sont ensuite mises en forme au sein de la pile verticale par un graphique représentant les données des dernières 24H par [Apex Charts Card](https://github.com/RomRider/apexcharts-card).
+
+<figure markdown="span">
+  ![AirQuality](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/airquality.png)
+</figure>
+
+??? tip "Trop de code tue le code"
+
+    ```yaml
+    type: vertical-stack
+    cards:
+      - type: heading
+        icon: mdi:radioactive
+        heading: Pollution de l'air
+        heading_style: subtitle
+        badges:
+          - type: entity
+            show_state: true
+            show_icon: false
+            entity: sensor.namur_belgium_dominant_pollutant
+            name: Polluant principal
+            color: accent
+            state_content:
+              - name
+              - state
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: sensor.namur_belgium_pm2_5
+            name: PM2.5
+            force_icon: false
+            show_icon: false
+            show_attribute: false
+            attribute: state_class
+            card_layout: normal
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: sensor.namur_belgium_pm10
+            name: PM10
+            force_icon: false
+            show_icon: false
+            show_attribute: false
+            attribute: state_class
+            card_layout: normal
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: sensor.namur_belgium_ozone
+            name: Ozone
+            force_icon: false
+            show_icon: false
+            show_attribute: false
+            attribute: state_class
+            card_layout: normal
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: sensor.namur_belgium_nitrogen_dioxide
+            name: Nitrés
+            force_icon: false
+            show_icon: false
+            show_attribute: false
+            attribute: state_class
+            card_layout: normal
+      - type: custom:apexcharts-card
+        header:
+          show: false
+          title: Pollution de l'air - Namur
+          show_states: true
+          colorize_states: true
+        series:
+          - entity: sensor.namur_belgium_pm2_5
+            name: PM2.5
+            show:
+              legend_value: false
+          - entity: sensor.namur_belgium_pm10
+            name: PM2.5
+          - entity: sensor.namur_belgium_ozone
+            name: O3
+          - entity: sensor.namur_belgium_nitrogen_dioxide
+            name: NO2
+    ```
+
+### Deuxième colonne : Environnement extérieur
+
+Une jauge indique l'indice UV, maximum et actuel, mis à jour toutes les heures. Les données sont fournies par [Open-UV](https://www.home-assistant.io/integrations/openuv/), la carte étant une [Gauge Card Pro](https://github.com/benjamin-dcs/gauge-card-pro)
+
+<figure markdown="span">
+  ![UVGauge](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/indiceUV.png)
 </figure>
 
 
-
-### Deuxième colonne :
 
 ### Troisième et quatrième colonnes : Cartes en temps réél
 
