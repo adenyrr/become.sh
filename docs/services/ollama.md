@@ -64,22 +64,27 @@ Dans ce cas, ma carte graphique, une `nvidia 1080 Ti` dont le code GPU est `GP10
 
 === "nvidia"
 
-    Les drivers nvidia étant propriétaires, il faut activer les dépots contrib et non-free *avant* d'installer `nvidia-smi`. (nvidia-smi sert à monitorer notre matériel graphique, il installe tout ce dont on a besoin)
-    ~~~ bash
-    sudo apt install nvidia-smi
+    Les drivers nvidia étant propriétaires, il faut activer les dépots contrib et non-free *avant* d'installer `nvidia-detect`. (nvidia-detect sert à détecter notre matériel graphique, il propose ensuite d'installer tout ce dont on a besoin)
+    ~~~ sh
+    sudo apt install nvidia-detect
     ~~~
-    `nvidia-smi` étant un utilitaire de monitoring de la carte, on peut vérifier qu'elle est bien détectée, initialisée et fonctionnelle avec la fonction
-    ~~~ bash
-    nvidia-smi
+    `nvidia-detect étant un utilitaire, on peut vérifier qu'elle est bien détectée, initialisée et quel driver installer avec :
+    ~~~ sh
+    nvidia-detect
     ~~~
+    En fin de commande, il indique quel paquet installer avec la commande `apt install <nomDuPaquet>`
     Par défaut, docker est incapable d'utiliser directement le GPU. Il faut pour ça installer un driver particulier, fourni par nvidia.
     On ajoute donc le dépôt :
     ~~~ sh 
     curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
     | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+    ~~~
+    ~~~ sh 
     curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
     | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' \
     | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+    ~~~
+    ~~~ sh 
     sudo apt-get update
     ~~~
     Puis on installe le driver depuis celui-ci :

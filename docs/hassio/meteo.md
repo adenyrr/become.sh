@@ -1,12 +1,14 @@
 ### Introduction
 
+
+
 ### Mise en page
 
 J'utilise le mode "sections" avec 4 colonnes et l'en-tête. Dans les faits, la troisième colonne est en fait double : il s'agit de cartes météo qui gagnent à prendre un peu plus d'espace.
 
 ### L'en-tête
 
-L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est limitée en terme de fonctionnalités, mais c'est la première chose qu'on voit : idéale donc pour les alertes météo ou les allergies. Afin d'éviter un encombrement, on créée des cartes conditionnelles qui ne s'affichent que lorsque l'entité choisie est active.
+L'en-tête, ou *header* est la portion située en haut de l'onglet. Elle est limitée en terme de fonctionnalités, mais c'est la première chose qu'on voit : idéale donc pour les alertes météo ou les allergies. Afin d'éviter un encombrement, on crée des cartes conditionnelles qui ne s'affichent que lorsque l'entité choisie est active.
 
 !!! tip "Source ?"
 
@@ -45,7 +47,7 @@ visibility: # On modifie la visibilité ici pour qu'il ne s'affiche que si le ca
   ![MétéoNow](https://raw.githubusercontent.com/adenyrr/become.sh/refs/heads/main/docs/assets/hassio/meteonow.png)
 </figure>
 
-La météo actuelle est donnée par l'intégration [IRM](https://github.com/jdejaegh/irm-kmi-ha) (disponible sur HACS). France-Météo fourni à peu près les mêmes informations. Les informations manquantes depuis l'[IRM](https://github.com/jdejaegh/irm-kmi-ha) sont récupérées par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/) et [AccuWeather.](https://www.home-assistant.io/integrations/accuweather/) Enfin, la carte est la [Platinium Weather Card](https://github.com/tommyjlong/platinum-weather-card), disponible sur HACS.
+La météo actuelle est donnée par l'intégration [IRM](https://github.com/jdejaegh/irm-kmi-ha) (disponible sur HACS). Météo-France fourni à peu près les mêmes informations. Les informations manquantes depuis l'[IRM](https://github.com/jdejaegh/irm-kmi-ha) sont récupérées par [tomorrow.io](https://www.home-assistant.io/integrations/tomorrowio/) et [AccuWeather.](https://www.home-assistant.io/integrations/accuweather/) Enfin, la carte est la [Platinium Weather Card](https://github.com/tommyjlong/platinum-weather-card), disponible sur HACS.
 
 ??? tip "Trop de code tue le code"
 
