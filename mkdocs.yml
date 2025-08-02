@@ -13,14 +13,16 @@ nav:
   - Home Assistant:
     - Installer Home Assistant: hassio/install.md
     - Ajouter HACS: hassio/hacs.md
+    - Intégrations: hassio/integrations.md
     - Onglet météo: hassio/meteo.md
   - Services:
     - IA locale avec Ollama: services/ollama.md
-    - Streaming avec Jellyfin : services/jellyfin.md
+    - Streaming avec Jellyfin: services/jellyfin.md
   - Outils & scripts:
-    - Scripts && commandes : outils/commandes.md
-    - Logiciels utiles : outils/softwares.md
-    - Autres ressources : outils/links.md
+    - Ressources et cours: outils/ressources.md
+    - Scripts && commandes: outils/commandes.md
+    - Logiciels utiles: outils/softwares.md
+    - Autres ressources: outils/links.md
     
 use_directory_urls: true
 
